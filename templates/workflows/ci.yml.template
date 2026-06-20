@@ -1,0 +1,44 @@
+# Copyable CI workflow — the gate stack from standards/04, hardened per standards/07.
+# Copy to .github/workflows/ci.yml and fill the <FILL> commands for your stack.
+#
+# Hardening baked in: SHA-pinned Actions, least-privilege token, concurrency cancel,
+# per-job timeout. Make this check a REQUIRED status check in branch protection
+# (standards/03 §4) so it actually blocks merges.
+
+name: ci
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+# Least privilege: read-only by default. Grant more only on the job that needs it.
+permissions:
+  contents: read
+
+# Cancel superseded runs on the same ref to save minutes and avoid races.
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      # Pin third-party Actions to a commit SHA; keep the version in the comment so
+      # updates stay reviewable. Re-pin when you intentionally bump.
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+      - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
+        with:
+          node-version: "<FILL: e.g. 22>"
+          cache: "<FILL: npm | pnpm | yarn, or remove>"
+
+      - run: "<FILL: install deps, frozen lockfile — e.g. npm ci>"
+
+      # The gate stack (standards/04 §1). Prefer one composite command so local == CI.
+      - run: "<FILL: typecheck / build>"
+      - run: "<FILL: lint — includes the file-size tripwire>"
+      - run: "<FILL: format check — verify, not reformat>"
+      - run: "<FILL: unit tests>"
+      - run: "<FILL: smoke / e2e on the critical journey>"
