@@ -1,7 +1,9 @@
-// Framework self-checks. The standards say "rules must be checkable" — so this repo
-// checks itself in CI. Extend with more controls over time.
+// Minimal framework self-check. The standards say "rules must be checkable", so this repo
+// checks itself in CI. This is the FIRST control, not full verification — it does NOT yet
+// validate heading anchors, README ✅/🚧 status accuracy, rule strength (MUST/SHOULD/MAY),
+// branch protection, or the compatibility matrix. Extend it over time.
 //
-// Verifies:
+// Verifies today:
 //   1. every reference to a `standards/NN-*.md` doc points to a file that exists
 //   2. every relative Markdown link resolves to a real file
 //   3. no `<FILL` placeholders leak outside template files

@@ -6,11 +6,15 @@ and never traded for speed.
 
 Anchor to recognized baselines rather than inventing one:
 
-- **Process:** NIST SSDF (SP 800-218) — a secure software development lifecycle.
-- **Application verification:** OWASP ASVS — the control checklist a release is verified
-  against. Pick a level (L1 baseline; L2 for apps handling sensitive data).
-- **Accessibility** (a security-adjacent quality of public surfaces): WCAG 2.2 AA — see
+- **Process:** NIST SSDF — **SP 800-218 v1.1** (a secure software development lifecycle).
+- **Application verification:** **OWASP ASVS 5.0.0** — the control checklist a release is
+  verified against; **cite control items with their version** (ASVS recommends it). Pick a
+  level (L1 baseline; L2 for apps handling sensitive data).
+- **Accessibility** (a security-adjacent quality of public surfaces): **WCAG 2.2 AA** — see
   `standards/02-ui-design-system.md`.
+
+Pin these versions; bump them in the same PR when a baseline updates (don't reference a
+moving "latest").
 
 ## 1. Core invariants (MUST)
 
@@ -79,4 +83,5 @@ credentials, fix, add the regression test that would have caught it, and run a s
 post-incident review. Hotfixes may skip normal ceremony (DoD allows it) but **must** carry
 the follow-up test and review deadline (`standards/00` §2).
 
-Sources of record: NIST SP 800-218 (SSDF), OWASP ASVS, OWASP Top 10, WCAG 2.2.
+Sources of record (versioned): NIST SP 800-218 v1.1 (SSDF) · OWASP ASVS 5.0.0 · OWASP
+Top 10 · WCAG 2.2. Keep the version numbers current here.

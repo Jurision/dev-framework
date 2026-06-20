@@ -1,8 +1,9 @@
 # dev-framework
 
-A reusable engineering + AI-agent collaboration standards framework. Copy it into a new
-project to get a known-good baseline for **how** to build, ship, and operate software —
-especially when humans and AI coding agents work the same codebase.
+A reusable engineering + AI-agent collaboration standards framework. Its goal is to become
+a known-good baseline for **how** to build, ship, and operate software — especially when
+humans and AI coding agents work the same codebase. It is a **developing baseline**
+(see Status below), not yet a finished one.
 
 It is distilled from real projects and aligned to current industry standards, then
 generalized: nothing here is tied to a specific product.
