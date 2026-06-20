@@ -7,6 +7,9 @@ which version it copied, so it can diff against later releases.
 ## [Unreleased]
 
 ### Added
+- `standards/05-testing-and-audits.md` — test pyramid + isolation, fail-before/pass-after
+  regression evidence, **journey/entity audits** ("200 ≠ healthy"), and process-compliance
+  audits (the framework runs this on itself).
 - `standards/06-deployment-ops.md` — deploy-from-trunk, **deploy-revision lockstep**, state
   outside the artifact, atomic/off-site backups + pre-migration snapshot, **restore drills**
   (RPO/RTO), first-class rollback, health/alerting on user-visible symptoms, runbooks,
