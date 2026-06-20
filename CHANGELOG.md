@@ -7,6 +7,10 @@ which version it copied, so it can diff against later releases.
 ## [Unreleased]
 
 ### Added
+- `standards/10-data-and-migrations.md` — additive/forward-only migrations, pre-migration
+  backup, **expand/contract** for breaking changes (rollback-safe), schema as reviewed single
+  source of truth, **tenant scoping as a security boundary** (cross-tenant regression test),
+  retention & privacy. **Completes all 11 standards.**
 - `standards/09-docs-and-adr.md` + `templates/adr.md.template` — one-job-per-doc doc set,
   **ADRs** for core/irreversible decisions (context→decision→alternatives→consequences,
   append-only), docs-as-code (change in the same PR), generate-don't-duplicate, keep-current.
