@@ -63,7 +63,7 @@ Legend: ✅ written · 🚧 outline / planned
 dev-framework/
 ├─ README.md · AGENTS.md · VERSION · CHANGELOG.md · LICENSE        ✅
 ├─ standards/
-│  ├─ 00-principles.md                ✅   06-deployment-ops.md          🚧
+│  ├─ 00-principles.md                ✅   06-deployment-ops.md          ✅
 │  ├─ 01-code-architecture.md         ✅   07-security-invariants.md     ✅
 │  ├─ 02-ui-design-system.md          🚧   08-ai-agent-collaboration.md  ✅
 │  ├─ 03-git-workflow.md              ✅   09-docs-and-adr.md            🚧

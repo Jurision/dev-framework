@@ -7,6 +7,10 @@ which version it copied, so it can diff against later releases.
 ## [Unreleased]
 
 ### Added
+- `standards/06-deployment-ops.md` — deploy-from-trunk, **deploy-revision lockstep**, state
+  outside the artifact, atomic/off-site backups + pre-migration snapshot, **restore drills**
+  (RPO/RTO), first-class rollback, health/alerting on user-visible symptoms, runbooks,
+  per-environment config & secrets.
 - `standards/04-ci-cd-quality-gates.md` + `templates/workflows/ci.yml.template` — the gate
   stack, required checks, and a **hardened, copyable** workflow (SHA-pinned Actions,
   least-privilege token, concurrency cancel, per-job timeout).
