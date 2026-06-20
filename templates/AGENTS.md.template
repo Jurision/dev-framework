@@ -1,0 +1,81 @@
+# AGENTS.md — <FILL: project name>
+
+Every coding agent (Codex, Claude Code, or any other) **reads this file before starting**
+and **follows it before writing code**. When a task conflicts with a rule, stop and flag
+it — do not work around the rule.
+
+> Keep this file under ~200 lines. Link to deeper docs instead of restating them. Update
+> it in the same PR that changes a convention.
+
+## Project overview
+
+<FILL: one paragraph — what this is, who uses it, the stack in one line.>
+<FILL: any language/locale rule, e.g. "public copy English, admin UI <language>; don't mix.">
+
+## Development environment
+
+- Install: `<FILL: e.g. pnpm install --frozen-lockfile>`
+- Run: `<FILL: dev command>`
+- Env: copy `.env.example` → `.env`. **Never commit secrets.** <FILL: persistent/runtime
+  paths that must not be written inside the deployed app dir, if any.>
+
+## Build & test commands
+
+- Typecheck / build: `<FILL>`
+- Lint / format check: `<FILL>` / `<FILL>`
+- Unit tests: `<FILL>`
+- Smoke / e2e: `<FILL>`
+- One command that runs them all: `<FILL: e.g. pnpm check>`
+
+## Code style & architecture invariants
+
+- <FILL: composition-root rule — the entry/root file stays thin; no domain logic there.>
+- **One concern per file.** <FILL: where things go — pages, domain logic, shared UI, …>
+- **File-size tripwire:** no source file over `<FILL: e.g. 800 (component) / 500 (logic)>`
+  lines (enforced in CI). If a file would exceed it, extract — do not raise the cap.
+  Legacy files over the cap carry a temporary exemption that may only be **lowered**.
+- <FILL: migrations are additive; never edit shipped migrations.>
+- <FILL: data scoping / tenancy rule, if multi-tenant.>
+
+## Protected zones — do not change casually
+
+- <FILL: e.g. the finalized document/visual design "<zone>" — move it verbatim, never
+  restyle, unless explicitly asked.>
+- <FILL: public contracts / schemas / security boundaries that need an explicit decision.>
+
+## Required reading before a <FILL: e.g. UI> task
+
+- <FILL: design-system / architecture docs to read before touching that surface, + the
+  review checklist to run before declaring done.>
+
+## Git & PR workflow
+
+- One tracked issue per unit of work; **search before starting** — never open a parallel
+  branch for an in-progress topic.
+- All PRs target `<FILL: main>`. Small, atomic, one concern. **Squash-merge, delete the
+  branch.** Never push directly to the trunk or production.
+- Branch names: `<FILL: feature/… | fix/… | refactor/… | chore/…>`.
+- WIP cap: `<FILL: ≤5>` branches/PRs in flight; stale (no PR in 14 days) → open or delete.
+
+## Definition of done
+
+Merged is **not** done. A change is done only when: acceptance criteria demonstrated · an
+automated test covers it (a bug fix has a fail-before/pass-after regression test) ·
+verified observable in the running system · no unexplained complexity increase · security
+invariants preserved · branch deleted, issue closed. **Claims must be git-verifiable** —
+report from `git log`/`gh pr view`, never from intent.
+
+## Security invariants (never violate)
+
+- <FILL: secrets server-side only; least privilege; identity trust root; customer-facing
+  vs. internal data separation; read-only where applicable.>
+
+## Visual changes (if applicable)
+
+- <FILL: stop at local preview, produce a screenshot, get approval before push.>
+
+## CI / deploy
+
+- CI runs `<FILL: gate stack>` on every PR; all green required to merge.
+- Deploy: `<FILL: how — e.g. auto-deploy from main via Actions>`. Verify the live version
+  matches the trunk (`<FILL: deploy-revision marker>`). Never hand-copy artifacts.
