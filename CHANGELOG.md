@@ -7,6 +7,11 @@ which version it copied, so it can diff against later releases.
 ## [Unreleased]
 
 ### Added
+- `standards/03-git-workflow.md` — trunk-based development, branch & commit rules
+  (Conventional Commits / SemVer), profile-graded WIP/staleness, and branch-protection
+  guidance (with the GitHub private-repo plan caveat).
+
+### Earlier in this cycle
 - Self-enforcement: `controls/check.mjs` + `framework-ci` (the framework checks itself).
 - Governance: `PULL_REQUEST_TEMPLATE`, `CODEOWNERS`, `VERSION`, `LICENSE`, this changelog.
 - `adapters/` — tool adapters (e.g. `CLAUDE.md` importing `@AGENTS.md`) + compatibility matrix.
