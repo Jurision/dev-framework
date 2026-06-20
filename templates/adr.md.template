@@ -1,0 +1,24 @@
+# ADR-<NNNN>: <short decision title>
+
+- **Status:** Proposed | Accepted | Superseded by ADR-<NNNN>
+- **Date:** <YYYY-MM-DD>
+- **Deciders:** <who signed off>
+
+## Context
+
+<The forces at play: the problem, constraints, and why a decision is needed now. State
+facts, not the conclusion.>
+
+## Decision
+
+<The change we're making, in active voice: "We will …".>
+
+## Alternatives considered
+
+- **<Option A>** — <why not chosen>
+- **<Option B>** — <why not chosen>
+
+## Consequences
+
+<What becomes easier and what becomes harder. Include follow-ups, risks, and what this
+locks in or rules out. Be honest about the downsides.>
