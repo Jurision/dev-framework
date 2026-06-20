@@ -7,6 +7,9 @@ which version it copied, so it can diff against later releases.
 ## [Unreleased]
 
 ### Added
+- `standards/09-docs-and-adr.md` + `templates/adr.md.template` — one-job-per-doc doc set,
+  **ADRs** for core/irreversible decisions (context→decision→alternatives→consequences,
+  append-only), docs-as-code (change in the same PR), generate-don't-duplicate, keep-current.
 - `standards/02-ui-design-system.md` — named design target (adjective pairs), tokens-not-
   magic-values, hard visual rules (no fake/dead controls, no invented URLs), WCAG 2.2 AA as
   a release criterion, the **visual review gate** (approve before push), protected zones.

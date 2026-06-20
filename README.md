@@ -66,15 +66,15 @@ dev-framework/
 │  ├─ 00-principles.md                ✅   06-deployment-ops.md          ✅
 │  ├─ 01-code-architecture.md         ✅   07-security-invariants.md     ✅
 │  ├─ 02-ui-design-system.md          ✅   08-ai-agent-collaboration.md  ✅
-│  ├─ 03-git-workflow.md              ✅   09-docs-and-adr.md            🚧
+│  ├─ 03-git-workflow.md              ✅   09-docs-and-adr.md            ✅
 │  ├─ 04-ci-cd-quality-gates.md       ✅   10-data-and-migrations.md     🚧
 │  └─ 05-testing-and-audits.md        ✅
 ├─ adapters/        ✅ tool adapters + compatibility-matrix.md
-├─ templates/       ✅ AGENTS.md · PR template · CODEOWNERS · CI workflow  ·  🚧 eslint / scripts
+├─ templates/       ✅ AGENTS.md · PR template · CODEOWNERS · CI workflow · ADR  ·  🚧 eslint / scripts
 ├─ controls/        ✅ check.mjs — the framework checks itself
 ├─ checklists/      🚧 DoD · PR review · visual review · bootstrap
 ├─ profiles/        🚧 solo / team-web / api / library / data-ai / regulated
-└─ adr/             🚧 ADR template + index
+└─ adr/             🚧 project-local ADRs (template in templates/adr.md.template)
 ```
 
 ## How to use it well
