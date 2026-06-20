@@ -68,7 +68,7 @@ dev-framework/
 │  ├─ 02-ui-design-system.md          🚧   08-ai-agent-collaboration.md  ✅
 │  ├─ 03-git-workflow.md              ✅   09-docs-and-adr.md            🚧
 │  ├─ 04-ci-cd-quality-gates.md       ✅   10-data-and-migrations.md     🚧
-│  └─ 05-testing-and-audits.md        🚧
+│  └─ 05-testing-and-audits.md        ✅
 ├─ adapters/        ✅ tool adapters + compatibility-matrix.md
 ├─ templates/       ✅ AGENTS.md · PR template · CODEOWNERS · CI workflow  ·  🚧 eslint / scripts
 ├─ controls/        ✅ check.mjs — the framework checks itself
