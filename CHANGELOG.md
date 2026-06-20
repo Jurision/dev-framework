@@ -7,9 +7,17 @@ which version it copied, so it can diff against later releases.
 ## [Unreleased]
 
 ### Added
+- `standards/04-ci-cd-quality-gates.md` + `templates/workflows/ci.yml.template` — the gate
+  stack, required checks, and a **hardened, copyable** workflow (SHA-pinned Actions,
+  least-privilege token, concurrency cancel, per-job timeout).
 - `standards/03-git-workflow.md` — trunk-based development, branch & commit rules
   (Conventional Commits / SemVer), profile-graded WIP/staleness, and branch-protection
   guidance (with the GitHub private-repo plan caveat).
+
+### Governance
+- Repo made **public**; `main` **branch protection enabled** (PR required, `check` required,
+  conversation resolution, linear history, no force-push/deletion; admin break-glass kept).
+  Governance is now **platform-enforced**, not just convention.
 
 ### Earlier in this cycle
 - Self-enforcement: `controls/check.mjs` + `framework-ci` (the framework checks itself).

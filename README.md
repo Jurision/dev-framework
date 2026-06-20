@@ -51,8 +51,8 @@ Ready now (✅) vs outline-only (🚧):
 2. ✅ Add an agent adapter so your tools actually pick it up — see `adapters/`
    (e.g. a `CLAUDE.md` that imports `@AGENTS.md`). **Verify it is in effect; don't assume.**
 3. ✅ Add `templates/PULL_REQUEST_TEMPLATE.md` and `templates/CODEOWNERS`.
-4. 🚧 Wire the quality gates from `standards/04-ci-cd-quality-gates.md` (currently an
-   outline) into CI, plus a file-size tripwire.
+4. ✅ Wire the quality gates from `standards/04-ci-cd-quality-gates.md` into CI — copy
+   `templates/workflows/ci.yml.template` and add a file-size tripwire.
 5. 🚧 Walk `checklists/new-project-bootstrap.md` (outline) and tick the rest.
 
 ## Structure
@@ -67,10 +67,10 @@ dev-framework/
 │  ├─ 01-code-architecture.md         ✅   07-security-invariants.md     ✅
 │  ├─ 02-ui-design-system.md          🚧   08-ai-agent-collaboration.md  ✅
 │  ├─ 03-git-workflow.md              ✅   09-docs-and-adr.md            🚧
-│  ├─ 04-ci-cd-quality-gates.md       🚧   10-data-and-migrations.md     🚧
+│  ├─ 04-ci-cd-quality-gates.md       ✅   10-data-and-migrations.md     🚧
 │  └─ 05-testing-and-audits.md        🚧
 ├─ adapters/        ✅ tool adapters + compatibility-matrix.md
-├─ templates/       ✅ AGENTS.md · PR template · CODEOWNERS   ·  🚧 CI / eslint / scripts
+├─ templates/       ✅ AGENTS.md · PR template · CODEOWNERS · CI workflow  ·  🚧 eslint / scripts
 ├─ controls/        ✅ check.mjs — the framework checks itself
 ├─ checklists/      🚧 DoD · PR review · visual review · bootstrap
 ├─ profiles/        🚧 solo / team-web / api / library / data-ai / regulated
