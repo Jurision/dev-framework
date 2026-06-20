@@ -40,7 +40,7 @@ engineering-standards/
 ├─ AGENTS.md                          ✅ how agents work ON this repo
 ├─ standards/
 │  ├─ 00-principles.md                ✅ north-star principles (read first)
-│  ├─ 01-code-architecture.md         🚧 composition roots, file-size tripwires, protected zones
+│  ├─ 01-code-architecture.md         ✅ composition roots, file-size tripwires, protected zones
 │  ├─ 02-ui-design-system.md          ⬜ design tokens, hard visual rules, a11y, visual review
 │  ├─ 03-git-workflow.md              ⬜ trunk-based, atomic PRs, WIP limit, conventional commits
 │  ├─ 04-ci-cd-quality-gates.md       ⬜ the gate stack + size guard + dependency hygiene
