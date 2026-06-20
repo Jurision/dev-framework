@@ -34,8 +34,9 @@ ecosystem). Two caveats that matter:
 
 ## 2. One backlog, no parallel work *(issue tracking)*
 
-- Every unit of work = **one tracked issue** — **MUST** for team profiles; **MAY** be
-  relaxed to ad-hoc for a solo or experimental repo (see `profiles/`). No issue, no branch.
+- Every unit of work = **one tracked issue**. **Team profiles: no issue, no branch.**
+  **Solo / experimental profiles MAY** use an explicitly documented ad-hoc workflow instead
+  (see `profiles/`).
 - **Search first.** Before starting, check existing issues, open PRs, and remote branches
   for the same topic. If it exists, continue it. **Never open a parallel branch for a
   problem someone is already solving.**
