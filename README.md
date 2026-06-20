@@ -8,12 +8,11 @@ humans and AI coding agents work the same codebase. It is a **developing baselin
 It is distilled from real projects and aligned to current industry standards, then
 generalized: nothing here is tied to a specific product.
 
-> **Status: `0.1.0-alpha` — not adoption-ready.** The foundation (principles, AI-agent
-> collaboration, code architecture, security) and the framework's own enforcement are in
-> place; the remaining standards are outlines. Numbers in this repo are **starter
-> defaults to calibrate**, not industry mandates. See `CHANGELOG.md` and `VERSION`. Do not
-> treat any document as final until it is marked ✅ below and has passed a real-project
-> dry-run.
+> **Status: `0.1.0-alpha` — not adoption-ready.** All **11 standards are now written** and
+> the framework's own enforcement is in place (PR + CI + branch protection). What remains
+> before adoption: profiles, checklists, and **real-project dry-runs**. Numbers in this repo
+> are **starter defaults to calibrate**, not industry mandates. See `CHANGELOG.md` and
+> `VERSION`. Don't treat any document as final until it has passed a real-project dry-run.
 
 ## Why this exists
 
@@ -67,7 +66,7 @@ dev-framework/
 │  ├─ 01-code-architecture.md         ✅   07-security-invariants.md     ✅
 │  ├─ 02-ui-design-system.md          ✅   08-ai-agent-collaboration.md  ✅
 │  ├─ 03-git-workflow.md              ✅   09-docs-and-adr.md            ✅
-│  ├─ 04-ci-cd-quality-gates.md       ✅   10-data-and-migrations.md     🚧
+│  ├─ 04-ci-cd-quality-gates.md       ✅   10-data-and-migrations.md     ✅
 │  └─ 05-testing-and-audits.md        ✅
 ├─ adapters/        ✅ tool adapters + compatibility-matrix.md
 ├─ templates/       ✅ AGENTS.md · PR template · CODEOWNERS · CI workflow · ADR  ·  🚧 eslint / scripts
