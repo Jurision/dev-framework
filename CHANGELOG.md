@@ -22,5 +22,17 @@ which version it copied, so it can diff against later releases.
   numbers are starter defaults; dependency auto-merge qualified by risk class.
 - README marked **Alpha / not adoption-ready**; "30 min" reframed as a target.
 
+### Fixed (alpha-hardening follow-up)
+- **Pinned framework CI Actions to commit SHAs** — the framework no longer violates its own
+  `standards/07` rule to pin Actions.
+- **Enabled this repo's own `.github/PULL_REQUEST_TEMPLATE.md` + `CODEOWNERS`** (not just the
+  copyable `templates/` — the framework now actually runs under them).
+- Graded the agent rules (issue-per-work, WIP ≤5, ~14-day staleness, worktree) as
+  **MUST/SHOULD + profile-conditional**; "root = production baseline" qualified to projects
+  that auto-deploy from the trunk.
+- README "known-good baseline" → **"developing baseline"** (no longer contradicts the Alpha banner).
+- **Pinned standard versions:** NIST SSDF v1.1, OWASP ASVS 5.0.0, WCAG 2.2.
+- Reframed `controls/check.mjs` as a **minimal** self-check, with its current limits stated.
+
 ## [0.1.0-alpha] — initial scaffold
 - README, AGENTS.md, principles, AI-agent collaboration, code architecture, AGENTS template.

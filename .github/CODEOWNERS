@@ -1,0 +1,5 @@
+# This repo's own CODEOWNERS (the framework practicing its rules). The reusable template
+# for adopting projects lives in templates/CODEOWNERS.
+# Owner is auto-requested on PRs; make it a required reviewer via branch protection.
+
+* @Jurision

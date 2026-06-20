@@ -34,16 +34,18 @@ ecosystem). Two caveats that matter:
 
 ## 2. One backlog, no parallel work *(issue tracking)*
 
-- Every unit of work = **one tracked issue**. No issue, no branch.
+- Every unit of work = **one tracked issue** — **MUST** for team profiles; **MAY** be
+  relaxed to ad-hoc for a solo or experimental repo (see `profiles/`). No issue, no branch.
 - **Search first.** Before starting, check existing issues, open PRs, and remote branches
   for the same topic. If it exists, continue it. **Never open a parallel branch for a
   problem someone is already solving.**
 
 ## 3. Limit work in progress *(Kanban WIP limit)*
 
-- Hard cap on in-flight branches/PRs (a small number, e.g. **≤ 5**). Finish or close
-  before opening new.
-- A branch with **no PR after ~14 days is stale**: open the PR or delete the branch.
+- Cap in-flight branches/PRs (**SHOULD**; starter default **≤ 5**, calibrate per
+  `profiles/`). Finish or close before opening new.
+- A branch with **no PR after a staleness window** (starter default ~14 days) is stale:
+  open the PR or delete the branch.
 
 ## 4. Branch & merge discipline *(trunk-based development)*
 
@@ -68,8 +70,10 @@ from intent.**
 
 When several agents work the same repo in parallel:
 
-- **One git worktree + one branch per agent.** The root checkout is the **production
-  baseline** (the auto-deploy source) — agents do **not** commit there directly.
+- **One git worktree + one branch per agent.** Agents do **not** commit on the trunk
+  directly. *(If the project auto-deploys from the trunk, the root checkout is the
+  production baseline; otherwise it is the integration baseline — either way, off-limits
+  for direct commits.)*
 - Maintain a small **worktree → branch → owner** map (in `STRUCTURE.md` or `AGENTS.md`) so
   everyone knows who owns what. `git worktree list` should match it.
 - **Before editing a file, check whether another agent has in-flight work on it**
