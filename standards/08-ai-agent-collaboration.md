@@ -6,9 +6,19 @@ standard in the framework: an agent does what is **written**, not what you meant
 
 ## 1. `AGENTS.md` is the contract *(industry standard)*
 
-Every repo has one root `AGENTS.md` — the README for agents. It is the **open standard**
-read natively by Codex, Claude Code, GitHub Copilot, Cursor, Gemini/Jules, Aider,
-Windsurf, Zed, and more, so one file replaces N tool-specific config files.
+Every repo has one root `AGENTS.md` — the README for agents — as the **preferred,
+cross-tool source of project rules** (a growing open convention across the agent
+ecosystem). Two caveats that matter:
+
+- **Tools discover it differently.** Some read `AGENTS.md` directly; others need an
+  **adapter entry** (e.g. Claude Code's primary memory file is `CLAUDE.md`, which can
+  import `@AGENTS.md`). Provide adapters per `adapters/`, keep a compatibility matrix, and
+  **verify the rules are actually in the agent's context — "the file exists" does not mean
+  "the agent obeys it."**
+- **A Markdown rule is context, not a control.** It biases the model; it enforces nothing.
+  Determinism comes from CI gates, hooks, permission boundaries, and branch protection
+  (`standards/04`, `standards/07`). `AGENTS.md` says *what* to do; the gates make
+  non-compliance *fail*.
 
 - **Read before you start; follow before you write.** State this at the top.
 - Recommended sections: project overview · dev environment · build & test commands · code

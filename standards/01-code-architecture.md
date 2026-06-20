@@ -36,8 +36,9 @@ not an ideal — set it generously so it only fires on genuine sprawl, and make 
 require an explicit, reviewed exemption rather than be impossible.
 
 - **Per-file cap, type-aware.** Components (verbose markup) get more room than plain logic
-  modules. A sensible default: **~800 lines for component files, ~500 for logic files**
-  (counting non-blank, non-comment lines). Vendored code and tests are exempt.
+  modules. **Starter defaults to calibrate** (per `profiles/`): ~800 lines for component
+  files, ~500 for logic files (non-blank, non-comment). Vendored code is exempt; tests get
+  a **higher threshold or an advisory warning**, not a permanent blanket exemption.
 - **Per-function cap as a `warn`** (e.g. ~400 lines) to surface monster functions without
   blocking — these are advisory and folded into feature work, not a separate refactor
   sprint.
@@ -54,10 +55,14 @@ You will adopt this with files already over the cap. Do **not** weaken the gate.
   backlog**.
 - **Caps may only be lowered, never raised.** A PR that shrinks a grandfathered file
   lowers its cap to the new size in the same PR — the cap tracks actual size, never lags.
-- **Delete the entry** once the file drops under the global cap. When the list is empty,
-  the codebase is monolith-free and can only stay that way.
+- **Delete the entry** once the file drops under the global cap.
 
-Never disable the gate (e.g. drop the lint step) to make CI green — fix the cause.
+When the list is empty, no file exceeds the size tripwire — but that is a **floor, not a
+proof of health**. Small files can still be tightly coupled or deployment-monolithic. Line
+count is one signal; also watch **cyclic dependencies, module coupling (fan-in/fan-out),
+change co-occurrence, core-file churn, public-API boundaries, test isolation, and data /
+deploy boundaries**. Never disable the gate (e.g. drop the lint step) to make CI green —
+fix the cause.
 
 ## 4. Decomposition discipline
 
@@ -92,9 +97,11 @@ they move-but-don't-change without an explicit ask.
 - **Every dependency is a liability** (bundle size, maintenance, security surface). Prefer
   the platform/stdlib; add a dep only when it clearly pays for itself.
 - **Lazy-load heavy, rarely-used deps** so they don't tax first load.
-- Keep deps current with an automated updater (e.g. Dependabot): **auto-merge grouped
-  patch/minor after CI**, **review majors deliberately** (a failing CI on a major bump is
-  the signal — handle it as its own task, never inside a feature PR).
+- Keep deps current with an automated updater (e.g. Dependabot). SemVer does **not**
+  guarantee a safe minor/patch — classify by **runtime vs. dev-only, permission/supply-
+  chain risk, and test coverage**. Auto-merge only **low-risk groups with strong CI**;
+  **review majors deliberately** (a failing CI on a major bump is the signal — handle it
+  as its own task, never inside a feature PR).
 
 ## 8. Naming & consistency
 

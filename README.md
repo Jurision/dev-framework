@@ -5,65 +5,86 @@ project to get a known-good baseline for **how** to build, ship, and operate sof
 especially when humans and AI coding agents work the same codebase.
 
 It is distilled from real projects and aligned to current industry standards, then
-generalized: nothing here is tied to a specific product. Adopt the whole thing, or pull
-the pieces you need.
+generalized: nothing here is tied to a specific product.
+
+> **Status: `0.1.0-alpha` — not adoption-ready.** The foundation (principles, AI-agent
+> collaboration, code architecture, security) and the framework's own enforcement are in
+> place; the remaining standards are outlines. Numbers in this repo are **starter
+> defaults to calibrate**, not industry mandates. See `CHANGELOG.md` and `VERSION`. Do not
+> treat any document as final until it is marked ✅ below and has passed a real-project
+> dry-run.
 
 ## Why this exists
 
 Most failures on small, fast-moving codebases are not "hard problems" — they are missing
 *framework*: no single source of truth, branch sprawl, "merged but not actually working",
-god files, design drift, and agents re-deriving conventions every session. The cost shows
-up later, as rework. This repo front-loads the conventions so that decision is made once.
+god files, design drift, and agents re-deriving conventions every session.
 
-For AI-agent collaboration the stakes are higher: an agent follows what is written, not
-what you meant. Ambiguity becomes a bug. A precise, machine-readable contract
-(`AGENTS.md`) is the single highest-leverage artifact a project can have.
+For AI-agent collaboration the stakes are higher: an agent follows what is **written**,
+not what you meant. But writing is not enforcement — a Markdown rule is model *context*,
+not a control. Determinism comes from CI, hooks, permissions, and branch protection. This
+repo pairs the written contract (`AGENTS.md`) with the gates that make it stick.
 
-## How to adopt (30 minutes)
+## Precedence (when guidance conflicts)
 
-1. Copy `templates/AGENTS.md.template` to your repo root as `AGENTS.md` and fill the
-   `<FILL>` blanks. This is the contract every agent reads before working.
-2. Wire the quality gates from `standards/04-ci-cd-quality-gates.md` into CI (typecheck,
-   lint, format, unit, smoke) plus a file-size tripwire.
-3. Add `PULL_REQUEST_TEMPLATE.md` and `CODEOWNERS` from `templates/`.
-4. Skim `checklists/new-project-bootstrap.md` and tick the rest.
-5. Link your `AGENTS.md` and `README.md` to the relevant `standards/` files instead of
-   restating them — keep one source of truth.
+Higher overrides lower. A framework default never overrides a security invariant or the
+law.
+
+```
+1. Law & compliance
+2. Security & data invariants
+3. Project decisions & protected contracts (approved ADRs, schemas)
+4. Project standards (the project's own AGENTS.md / docs)
+5. Profile (project type: solo / team / api / library / data-ai / regulated)
+6. Framework defaults (this repo)
+```
+
+The "principles" here guide design; they do **not** override 1–3.
+
+## How to adopt (target ~30 min once stable; today: partial)
+
+Ready now (✅) vs outline-only (🚧):
+
+1. ✅ Copy `templates/AGENTS.md.template` → your repo's `AGENTS.md`; fill in the
+   placeholders. This is the contract every agent reads first.
+2. ✅ Add an agent adapter so your tools actually pick it up — see `adapters/`
+   (e.g. a `CLAUDE.md` that imports `@AGENTS.md`). **Verify it is in effect; don't assume.**
+3. ✅ Add `templates/PULL_REQUEST_TEMPLATE.md` and `templates/CODEOWNERS`.
+4. 🚧 Wire the quality gates from `standards/04-ci-cd-quality-gates.md` (currently an
+   outline) into CI, plus a file-size tripwire.
+5. 🚧 Walk `checklists/new-project-bootstrap.md` (outline) and tick the rest.
 
 ## Structure
 
-Legend: ✅ written · 🚧 in progress · ⬜ planned
+Legend: ✅ written · 🚧 outline / planned
 
 ```
-engineering-standards/
-├─ README.md                          ✅ this file
-├─ AGENTS.md                          ✅ how agents work ON this repo
+dev-framework/
+├─ README.md · AGENTS.md · VERSION · CHANGELOG.md · LICENSE        ✅
 ├─ standards/
-│  ├─ 00-principles.md                ✅ north-star principles (read first)
-│  ├─ 01-code-architecture.md         ✅ composition roots, file-size tripwires, protected zones
-│  ├─ 02-ui-design-system.md          ⬜ design tokens, hard visual rules, a11y, visual review
-│  ├─ 03-git-workflow.md              ⬜ trunk-based, atomic PRs, WIP limit, conventional commits
-│  ├─ 04-ci-cd-quality-gates.md       ⬜ the gate stack + size guard + dependency hygiene
-│  ├─ 05-testing-and-audits.md        ⬜ test pyramid, "200 ≠ healthy" journey audits
-│  ├─ 06-deployment-ops.md            ⬜ runbooks, backups, deploy markers, health checks, secrets
-│  ├─ 07-security-invariants.md       ⬜ least privilege, identity trust root, data separation
-│  ├─ 08-ai-agent-collaboration.md    ✅ AGENTS.md contract, DoD, multi-agent workflow, roles
-│  ├─ 09-docs-and-adr.md              ⬜ README/AGENTS/STRUCTURE, ADRs, docs-as-code
-│  └─ 10-data-and-migrations.md       ⬜ additive migrations, schema discipline, tenancy scoping
-├─ templates/                         🚧 AGENTS.md ✅, PR/CODEOWNERS/CI/eslint/scripts ⬜
-├─ checklists/                        ⬜ DoD, PR review, visual review, bootstrap
-└─ adr/                               ⬜ ADR template + index
+│  ├─ 00-principles.md                ✅   06-deployment-ops.md          🚧
+│  ├─ 01-code-architecture.md         ✅   07-security-invariants.md     ✅
+│  ├─ 02-ui-design-system.md          🚧   08-ai-agent-collaboration.md  ✅
+│  ├─ 03-git-workflow.md              🚧   09-docs-and-adr.md            🚧
+│  ├─ 04-ci-cd-quality-gates.md       🚧   10-data-and-migrations.md     🚧
+│  └─ 05-testing-and-audits.md        🚧
+├─ adapters/        ✅ tool adapters + compatibility-matrix.md
+├─ templates/       ✅ AGENTS.md · PR template · CODEOWNERS   ·  🚧 CI / eslint / scripts
+├─ controls/        ✅ check.mjs — the framework checks itself
+├─ checklists/      🚧 DoD · PR review · visual review · bootstrap
+├─ profiles/        🚧 solo / team-web / api / library / data-ai / regulated
+└─ adr/             🚧 ADR template + index
 ```
 
 ## How to use it well
 
-- **Standards are defaults, not dogma.** Deviate when you have a reason — and write the
-  reason down (an ADR, or a one-line note in the PR). An undocumented deviation is the bug.
-- **Keep it small and enforced.** A rule that is not checked in CI or review will be
-  ignored under delivery pressure. Prefer one enforced rule over ten aspirational ones.
-- **Update in pull requests.** When a convention changes, change the standard in the same
-  PR. Stale standards are worse than none.
+- **Standards are defaults, not dogma.** Deviate when you have a reason — write the reason
+  down (an ADR or a one-line PR note). An undocumented deviation is the bug. Use
+  **MUST / SHOULD / MAY** to grade how hard each rule is.
+- **Keep it small and enforced.** A rule not checked in CI or review gets ignored under
+  pressure. One enforced rule beats ten aspirational ones — this repo runs `controls/`
+  on itself.
+- **Update in pull requests.** Change the standard in the same PR that changes the
+  convention. Stale standards are worse than none.
 
-## License
-
-Internal reusable framework. Adapt freely across your own projects.
+Maintainer: project owner. Changes go through PRs with the framework CI check green.

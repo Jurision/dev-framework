@@ -1,0 +1,13 @@
+# CLAUDE.md
+
+This project's rules live in `AGENTS.md`. Import them so Claude Code loads the same
+contract every other agent uses:
+
+@AGENTS.md
+
+<!--
+Claude Code's primary project-memory file is CLAUDE.md; the @AGENTS.md import keeps one
+source of truth instead of two drifting files. After adding this, VERIFY the rules are
+actually in context (they should appear in the session's project instructions) — do not
+assume the file's presence means the agent obeys it. See adapters/compatibility-matrix.md.
+-->

@@ -1,0 +1,11 @@
+# Copy to .github/CODEOWNERS (or repo root) in your project.
+# Owners are auto-requested for review and can be made required by branch protection.
+# Replace with your handles/teams.
+
+# Default owner for everything
+* @maintainer
+
+# Make standards and security changes require their owners
+# /standards/        @tech-lead
+# /standards/07-security-invariants.md  @security-owner
+# /AGENTS.md         @tech-lead
