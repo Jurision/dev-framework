@@ -65,7 +65,7 @@ dev-framework/
 ├─ standards/
 │  ├─ 00-principles.md                ✅   06-deployment-ops.md          ✅
 │  ├─ 01-code-architecture.md         ✅   07-security-invariants.md     ✅
-│  ├─ 02-ui-design-system.md          🚧   08-ai-agent-collaboration.md  ✅
+│  ├─ 02-ui-design-system.md          ✅   08-ai-agent-collaboration.md  ✅
 │  ├─ 03-git-workflow.md              ✅   09-docs-and-adr.md            🚧
 │  ├─ 04-ci-cd-quality-gates.md       ✅   10-data-and-migrations.md     🚧
 │  └─ 05-testing-and-audits.md        ✅

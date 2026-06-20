@@ -7,6 +7,9 @@ which version it copied, so it can diff against later releases.
 ## [Unreleased]
 
 ### Added
+- `standards/02-ui-design-system.md` — named design target (adjective pairs), tokens-not-
+  magic-values, hard visual rules (no fake/dead controls, no invented URLs), WCAG 2.2 AA as
+  a release criterion, the **visual review gate** (approve before push), protected zones.
 - `standards/05-testing-and-audits.md` — test pyramid + isolation, fail-before/pass-after
   regression evidence, **journey/entity audits** ("200 ≠ healthy"), and process-compliance
   audits (the framework runs this on itself).
