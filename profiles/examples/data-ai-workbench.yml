@@ -11,7 +11,6 @@ modifiers:
 calibrations:
   wip_cap: 5
   stale_days: 14
-exceptions:
-  - rule: "standards/02 brand design system"
-    change: "relaxed (no public brand tokens / SEO)"
-    reason: "internal workbench only; internal-ui still keeps a11y / state / real-controls"
+exceptions: []           # no documented rule relaxations; this does not prove compliance
+# Note: internal-ui simply does NOT trigger public brand / SEO — that's the composable model,
+# not a relaxation, so it is not listed as an exception.
