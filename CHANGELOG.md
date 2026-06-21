@@ -7,6 +7,15 @@ which version it copied, so it can diff against later releases.
 ## [Unreleased]
 
 ### Added
+- **`controls/assert-live-revision.mjs`** (0.2 — second control, implements #35) — asserts the
+  **live system serves the intended release SHA** (`standards/06` §2). Zero-dependency; reads
+  the actual revision from an HTTP **JSON field / response header / plain-text body** or a
+  **local marker file**; **exact full-SHA by default** (prefix only via `--allow-prefix`, with
+  a WARN); retries transport failures but **never a confirmed mismatch**; auth headers come
+  from **env vars and are never printed**; exit **0/1/2** (match / mismatch / error). Tested
+  in-process via an exported `run()` + a local HTTP server (17 cases). Grounded by the real
+  adoption (the deploy's `/health` exposed the SHA). v1 excludes SSH / rollback / cloud /
+  GitHub API.
 - **`controls/workflow-policy.mjs`** (0.2 — first control, implements #32) — a
   **zero-dependency GitHub Actions workflow-policy lint** (rules **WF001–WF008**: full-SHA
   `uses:`, least-privilege `permissions:`, per-job `timeout-minutes`, validation-cancels vs
