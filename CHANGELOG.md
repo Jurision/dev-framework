@@ -7,6 +7,11 @@ which version it copied, so it can diff against later releases.
 ## [Unreleased]
 
 ### Added
+- **`profiles/modifiers/runtime-ai.md` + `human-in-the-loop.md`** (provisional) — AI
+  modifiers. `runtime-ai`: per-call model/provider/prompt version, least-privilege tool
+  permissions, limits/timeouts, graceful degradation, leak-free observability.
+  `human-in-the-loop`: AI drafts / human commits, a **code-enforced approval gate + audit**
+  (operationalizes `07` §2.3 for AI-suggested side effects).
 - **`profiles/modifiers/multi-tenant.md`** (provisional) — security-boundary modifier: tenant
   key + per-tenant uniqueness, **query-layer default scoping** (schema key ≠ isolation), and a
   **cross-tenant negative test as a required-CI MUST** (the proof the dry-run lacked).
