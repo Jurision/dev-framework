@@ -29,10 +29,12 @@ basics (injection boundary, secrets-out-of-context) are global `standards/07` �
    outright:** send only the minimum data a task needs to an **approved** provider; honor
    consent / retention / region / data-processing policy; keep **raw PII out of logs** and
    redact sensitive fields per policy.
-6. **A minimum runtime-model eval gate.** User-visible model behavior has a **versioned eval
-   set**; a change to the **model, prompt, toolset, or retrieval config** runs a **regression
-   evaluation against explicit thresholds in a required gate**. Live quality metrics complement
-   but **do not replace** pre-release eval. *(This closes the `web-app + runtime-ai` hole — any
+6. **A minimum runtime-model eval gate.** Model behavior that **affects users, business
+   decisions, security, or data outcomes** — including **non-displayed paths** like backend
+   classification or risk scoring — has a **versioned eval set**; a change to the **model,
+   prompt, toolset, or retrieval config** runs a **regression evaluation against explicit
+   thresholds in a required gate**. Live quality metrics complement but **do not replace**
+   pre-release eval. *(This closes the `web-app + runtime-ai` hole — any
    base + runtime AI gets a behavior gate, not only `data-ai`.)*
 
 ## Rules that may relax

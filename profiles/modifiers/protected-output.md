@@ -17,7 +17,8 @@ Delta over `00–10` (extends the protected-zone rules of `standards/01` §6 and
 
 1. **Protected renderers move verbatim.** When refactoring/relocating a protected renderer,
    change its **location, not its output** — never restyle in the same change
-   (`standards/01` §6, `standards/02` §6). Verify the before/after render is identical.
+   (`standards/01` §6, `standards/02` §6). Verify the before/after render is **identical on the
+   declared protected dimensions** (rule 2).
 2. **Declare the protected dimensions, then regression-test them in required CI.** Pin the
    output on the dimensions the artifact actually promises — **semantic** (fields, amounts,
    order, audience-data), **structural** (page count, tables, regions, schema), and/or

@@ -9,7 +9,8 @@ schema into the query layer and the test suite.
 
 ## Applies to / does NOT apply to
 
-- **Applies:** SaaS / workspace products where one DB/instance holds many tenants' data.
+- **Applies:** any product serving **multiple isolated tenants**, regardless of storage
+  topology (shared DB, schema-per-tenant, or database-per-tenant).
 - **Does not apply:** single-tenant products (one site / one customer) — then `standards/10`
   §5 simply doesn't fire.
 

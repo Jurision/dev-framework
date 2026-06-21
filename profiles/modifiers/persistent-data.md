@@ -43,13 +43,14 @@ finding across all three dry-runs: backups exist, but **recovery is rarely verif
 
 - A **backup job** (scheduled, monitored — alert on a missed backup).
 - A **restore-drill job** (scheduled) that restores + asserts integrity.
-- A **pre-migration snapshot step** wired into the deploy/migration pipeline.
+- A **risk-appropriate recovery-point step** (snapshot / PITR / transactional rollback /
+  equivalent) wired into the deploy/migration pipeline.
 
 ## Acceptance evidence
 
 - A recent backup exists **off-site**; the **last restore drill** has a date and a pass
-  result; the migration pipeline shows a **pre-migration snapshot** step; RPO/RTO are written
-  down.
+  result; the migration pipeline shows a **verified pre-migration recovery point** step; RPO/RTO
+  are written down.
 
 ## Non-goals (owned elsewhere)
 
