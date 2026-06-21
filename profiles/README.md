@@ -65,8 +65,9 @@ Required sections (skeleton):
 🚧 = to be written in a following PR, **generated from dry-run evidence, not invented.**
 A base/modifier without a real source project stays a stub rather than a guess.
 
-**Bases** — [`base/data-ai`](base/data-ai.md) ✅ *(provisional)* · `base/web-app` 🚧 ·
-`base/api-service` 🚧 *(unevidenced stub)* · `base/library-sdk` 🚧 *(unevidenced stub)*.
+**Bases** — [`base/data-ai`](base/data-ai.md) ✅ *(provisional)* ·
+[`base/web-app`](base/web-app.md) ✅ *(provisional)* · `base/api-service` 🚧 *(unevidenced
+stub)* · `base/library-sdk` 🚧 *(unevidenced stub)*.
 
 **Modifiers** — `internal-ui` 🚧 · `public-ui` 🚧 · `persistent-data` 🚧 · `multi-tenant` 🚧
 · `runtime-ai` 🚧 · `protected-output` 🚧 · `human-in-the-loop` 🚧 · `team-maintained` /

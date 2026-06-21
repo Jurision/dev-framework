@@ -7,6 +7,11 @@ which version it copied, so it can diff against later releases.
 ## [Unreleased]
 
 ### Added
+- **`profiles/base/web-app.md`** (provisional, 2 web dry-runs) — browser-delivered workload
+  **delta only**: production artifact exercised in required CI; the project **defines and
+  E2E-verifies its own critical journey(s)** (no fixed edit→render journey;
+  mutation→persistence→render for write apps); routing contract. Inherits `02`/`06`; leaves
+  public-vs-internal, tenancy, and protected-output to modifiers.
 - **`profiles/base/data-ai.md`** (provisional, first base profile) — the data/analysis
   workload **delta only**: provenance + lineage, versioned transforms, deterministic-stage
   tests vs **versioned eval sets + thresholds** for model output, a **blocking data-quality
