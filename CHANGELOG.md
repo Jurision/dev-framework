@@ -6,6 +6,11 @@ which version it copied, so it can diff against later releases.
 
 ## [Unreleased]
 
+_Nothing yet. Next: `controls/` (live-revision assertion · cross-tenant negative test ·
+restore-drill scheduler), and broader profile validation against more real projects._
+
+## [0.1.0-alpha] — 2026-06-21
+
 ### Added
 - **`checklists/` completed** (definition-of-done · pr-review · visual-review ·
   new-project-bootstrap), **delivered via a standard-11 dogfood**: the framework used its own
@@ -219,5 +224,5 @@ which version it copied, so it can diff against later releases.
 - **Pinned standard versions:** NIST SSDF v1.1, OWASP ASVS 5.0.0, WCAG 2.2.
 - Reframed `controls/check.mjs` as a **minimal** self-check, with its current limits stated.
 
-## [0.1.0-alpha] — initial scaffold
+### Initial scaffold (first commits)
 - README, AGENTS.md, principles, AI-agent collaboration, code architecture, AGENTS template.
