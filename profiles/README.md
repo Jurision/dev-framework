@@ -69,7 +69,8 @@ A base/modifier without a real source project stays a stub rather than a guess.
 [`base/web-app`](base/web-app.md) ✅ *(provisional)* · `base/api-service` 🚧 *(unevidenced
 stub)* · `base/library-sdk` 🚧 *(unevidenced stub)*.
 
-**Modifiers** — `internal-ui` 🚧 · `public-ui` 🚧 · `persistent-data` 🚧 · `multi-tenant` 🚧
+**Modifiers** — [`internal-ui`](modifiers/internal-ui.md) ✅ *(prov.)* ·
+[`public-ui`](modifiers/public-ui.md) ✅ *(prov.)* · `persistent-data` 🚧 · `multi-tenant` 🚧
 · `runtime-ai` 🚧 · `protected-output` 🚧 · `human-in-the-loop` 🚧 · `team-maintained` /
 `solo-maintained` 🚧 · `regulated` 🚧 *(unevidenced stub)*.
 

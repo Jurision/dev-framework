@@ -7,6 +7,10 @@ which version it copied, so it can diff against later releases.
 ## [Unreleased]
 
 ### Added
+- **`profiles/modifiers/internal-ui.md` + `public-ui.md`** (provisional) — first UI
+  modifiers. `internal-ui`: `02` applies in full to operator tools (no a11y/state waiver for
+  "internal"). `public-ui`: sitemap + public link-graph + content↔render parity + scheduled
+  **synthetic content** monitoring + full WCAG on public pages. Both delta-only over `02`.
 - **`profiles/base/web-app.md`** (provisional, 2 web dry-runs) — browser-delivered workload
   **delta only**: production artifact exercised in required CI; the project **defines and
   E2E-verifies its own critical journey(s)** (no fixed edit→render journey;
