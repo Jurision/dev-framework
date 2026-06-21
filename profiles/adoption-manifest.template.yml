@@ -1,0 +1,29 @@
+# Adoption manifest — commit this as `.dev-framework.yml` (or inline in AGENTS.md).
+# It is the machine-readable record of which dialect of the framework this repo runs:
+# one base workload profile + zero or more modifiers, plus calibrated numbers and any
+# documented exceptions. See profiles/README.md for the composition + override rules.
+
+framework_version: 0.1.0-alpha
+
+# Exactly one base (the dominant workload).
+base_profile: web-app            # web-app | api-service | library-sdk | data-ai
+
+# Zero or more cross-cutting modifiers.
+modifiers:
+  - internal-ui
+  - persistent-data
+  - multi-tenant
+
+# Calibrated starter defaults (omit to accept the framework/profile default).
+calibrations:
+  wip_cap: 3
+  stale_days: 10
+  component_max_lines: 800
+  logic_max_lines: 500
+
+# Every relaxation of a non-security default MUST appear here with a reason.
+# Security/law invariants can never be lowered (profiles/README §override-rules).
+exceptions:
+  - rule: "<standard ref, e.g. 03 §3 WIP cap>"
+    change: "<what was relaxed/raised>"
+    reason: "<why this project diverges>"

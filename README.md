@@ -35,7 +35,7 @@ law.
 2. Security & data invariants
 3. Project decisions & protected contracts (approved ADRs, schemas)
 4. Project standards (the project's own AGENTS.md / docs)
-5. Profile (project type: solo / team / api / library / data-ai / regulated)
+5. Profile (one base workload + composable modifiers — see `profiles/`)
 6. Framework defaults (this repo)
 ```
 
@@ -72,7 +72,7 @@ dev-framework/
 ├─ templates/       ✅ AGENTS.md · PR template · CODEOWNERS · CI workflow · ADR  ·  🚧 eslint / scripts
 ├─ controls/        ✅ check.mjs — the framework checks itself
 ├─ checklists/      🚧 DoD · PR review · visual review · bootstrap
-├─ profiles/        🚧 solo / team-web / api / library / data-ai / regulated
+├─ profiles/        ✅ composition model (base + modifiers) + adoption manifest  ·  🚧 base/modifier docs
 └─ adr/             🚧 project-local ADRs (template in templates/adr.md.template)
 ```
 
