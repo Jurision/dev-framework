@@ -7,6 +7,10 @@ which version it copied, so it can diff against later releases.
 ## [Unreleased]
 
 ### Added
+- **`templates/workflows/ci-python.yml.template`** — Python validation-CI variant (pinned
+  `setup-python`, the two-axis coverage/hardening/enforcement structure, pytest + optional
+  ruff/mypy gates, profile-gate placeholder), produced from the Python dry-run. Templates now
+  cover node / python / generic.
 - **`profiles/examples/`** — three **desensitized** adoption-manifest examples (data-AI
   workbench · public content web · multi-tenant document app) generated from the frozen
   dry-runs. The two web shapes compose differently, validating base+modifiers end-to-end.
