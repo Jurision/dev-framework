@@ -8,11 +8,12 @@ humans and AI coding agents work the same codebase. It is a **developing baselin
 It is distilled from real projects and aligned to current industry standards, then
 generalized: nothing here is tied to a specific product.
 
-> **Status: `0.1.0-alpha` — not adoption-ready.** All **11 standards are now written** and
-> the framework's own enforcement is in place (PR + CI + branch protection). What remains
-> before adoption: profiles, checklists, and **real-project dry-runs**. Numbers in this repo
-> are **starter defaults to calibrate**, not industry mandates. See `CHANGELOG.md` and
-> `VERSION`. Don't treat any document as final until it has passed a real-project dry-run.
+> **Status: `0.1.0-alpha` — not adoption-ready.** All **12 standards (00–11) are written**,
+> the composable **profiles** are in place, and the framework's own enforcement runs (PR + CI
+> + branch protection); three real-project dry-runs are done. What remains: **checklists**,
+> deferred **controls**, and real adoption. Numbers here are **starter defaults to
+> calibrate**, not industry mandates; provisional until real adoption. See `CHANGELOG.md` and
+> `VERSION`.
 
 ## Why this exists
 
@@ -69,9 +70,9 @@ dev-framework/
 │  ├─ 02-ui-design-system.md          ✅   08-ai-agent-collaboration.md  ✅
 │  ├─ 03-git-workflow.md              ✅   09-docs-and-adr.md            ✅
 │  ├─ 04-ci-cd-quality-gates.md       ✅   10-data-and-migrations.md     ✅
-│  └─ 05-testing-and-audits.md        ✅
+│  └─ 05-testing-and-audits.md        ✅   11-specification-and-delivery.md ✅
 ├─ adapters/        ✅ tool adapters + compatibility-matrix.md
-├─ templates/       ✅ AGENTS.md · PR template · CODEOWNERS · CI workflow · ADR  ·  🚧 eslint / scripts
+├─ templates/       ✅ AGENTS · PR · CODEOWNERS · CI(node/python/generic) · ADR · brief/spec/plan/report  ·  🚧 eslint
 ├─ controls/        ✅ check.mjs — the framework checks itself
 ├─ checklists/      🚧 DoD · PR review · visual review · bootstrap
 ├─ profiles/        ✅ composition model (base + modifiers) + adoption manifest  ·  🚧 base/modifier docs

@@ -43,8 +43,8 @@ record at all:
 
 A forward-looking spec or a status handoff **does not** satisfy the decision-record MUST
 (§2) unless it contains the decision + alternatives + consequences. The
-spec → plan → handoff → phase-report flow is its own concern — a **planned `standards/11`
-(specification & delivery)**, if adopted — not something to cram into an ADR.
+spec → plan → handoff → phase-report flow is its own concern —
+`standards/11-specification-and-delivery.md` — not something to cram into an ADR.
 
 ## 4. Docs-as-code *(MUST)*
 
