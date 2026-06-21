@@ -10,8 +10,8 @@ generalized: nothing here is tied to a specific product.
 
 > **Status: `0.1.0-alpha` — not adoption-ready.** All **12 standards (00–11) are written**,
 > the composable **profiles** are in place, and the framework's own enforcement runs (PR + CI
-> + branch protection); three real-project dry-runs are done. What remains: **checklists**,
-> deferred **controls**, and real adoption. Numbers here are **starter defaults to
+> + branch protection); three real-project dry-runs are done, and the spec→delivery flow was
+> dogfooded to ship the checklists. What remains: deferred **controls** and **real adoption**. Numbers here are **starter defaults to
 > calibrate**, not industry mandates; provisional until real adoption. See `CHANGELOG.md` and
 > `VERSION`.
 
