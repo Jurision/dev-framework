@@ -1,0 +1,16 @@
+# Feature list / roadmap: <project>
+
+Step 1 of standards/11 §1 — the **inventory**, grouped by big phase. (For the detailed
+contract of a single feature, use `FEATURE_SPEC.md.template`.) Each item is stated clearly
+enough that a programmer — human or agent — couldn't build the wrong thing. **Detail only the
+current phase** (§2); keep later phases as direction.
+
+## Phase <N>: <goal of this phase — e.g. a minimal usable slice>
+
+| Feature | What it does | Acceptance (done = …) | Non-goal for this phase |
+|---|---|---|---|
+| <feature> | <behavior> | <observable result> | <explicitly deferred> |
+
+## Later phases (direction only — do NOT detail yet, §2)
+- Phase <N+1>: <one line>
+- Phase <N+2>: <one line>

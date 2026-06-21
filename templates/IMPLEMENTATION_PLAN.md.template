@@ -1,15 +1,20 @@
 # Implementation plan — Phase <N>: <goal>
 
-**The single source of truth for this phase (standards/11 §3).** Development *and* acceptance
-both follow it. A chat idea is **not a change until it is written back here.**
+**Owns:** sequence, impact, verification method, phase boundaries (standards/11 §3). It does
+**not** override what the product wants — that's the feature spec. A chat idea is **not a
+change until written to its owning artifact, reviewed, and committed.**
 
+- **Sources (versioned — reference, don't re-paste):** <FEATURE_SPEC link + revision> ·
+  <PROJECT_BRIEF revision> · related **ADR(s):** <link>
+- **Risk level:** <low | core/irreversible/security/migration/deploy → high>
 - **In scope:** <what this phase builds>
-- **Out of scope / do NOT touch:** <foundation (stack/structure/schema/auth/payment) +
-  later-phase items — §4>
+- **Out of scope / do NOT touch:** <foundation + later-phase items — §4>
+- **Impact surface:** modules <…> · data/schema <…> · contracts/API <…> · deploy <…>
 - **Profile-required gates that apply:** <cross-tenant test / model eval / data-quality /
   protected-output regression / …>
+- **Rollback / recovery:** <how to undo this phase if it goes wrong>
 
-## Sub-phase <N.1>: <name>
+## Sub-phase <N.1>: <name>   *(risk: low | high)*
 
 1. <step — what to do>
    - **Done =** <what counts as complete>
@@ -17,9 +22,12 @@ both follow it. A chat idea is **not a change until it is written back here.**
    - **Don't touch:** <boundary>
 2. <step …>
 
-## Sub-phase <N.2>: <name>
+## Acceptance checkpoints (standards/11 §5)
+- **Stop + accept at:** <every high-risk boundary — list them>
+- **May batch to checkpoint:** <the low-risk, auto-tested runs>
 
-1. <step …>
+## Traceability & open questions (resolve BEFORE code)
+- <requirement → spec → plan check; any conflict with the versioned sources, or "none">
 
-## Open questions — resolve BEFORE any code (§3)
-- <re-paste original requirements and list any conflict with this plan, or "none">
+## Change log / approver
+- <date — what changed in this plan — approved by>

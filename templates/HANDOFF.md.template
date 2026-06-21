@@ -1,0 +1,20 @@
+# Handoff — <topic / phase>
+
+A distinct document (standards/09 §3): it carries **current state + next action**, not the
+*why* (ADR), the *what* (feature spec), or the *how* (implementation plan). A phase report
+doubles as a handoff **only if** it includes everything below.
+
+## Current state
+<what is done and live right now; the relevant plan/spec + revision>
+
+## Environment
+<where it runs / branches / deploy revision / how to start it>
+
+## Evidence
+<CI / tests / runtime proof of the current state — links, git-verifiable>
+
+## Blockers / open issues
+<what's stuck, what's undecided, anything risky in flight>
+
+## Next action
+<the single most important next step — concrete enough to start cold>

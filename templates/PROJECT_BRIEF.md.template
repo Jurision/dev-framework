@@ -1,19 +1,37 @@
 # Project brief: <name>
 
 Step 1 of standards/11 §1. Fill before tech-stack and architecture — the agent builds the
-wrong thing from a vague brief.
+wrong thing from a vague brief. **Owns:** problem, users, goals, success criteria.
 
-## What this is
-<One paragraph: the product, who it's for, the core value.>
+## Problem statement
+<What hurts today / what's missing. The problem, not the solution.>
+
+## Users & roles
+- <role> — <what they need / can do>
+
+## Key user journeys
+- <the 1–3 paths that matter most, end to end>
 
 ## Goals
 - <the 2–5 outcomes that define success>
 
+## Measurable success criteria
+- <how you'll know it worked — a number / threshold / observable, not a vibe>
+
 ## Non-goals (explicitly out of scope)
 - <what this project will NOT do — at least as important as the goals>
 
+## Data sensitivity
+- <PII / financial / regulated? what must never leak; retention/residency>
+
+## Runtime & deployment environment
+- <where it runs, who hosts, constraints>
+
 ## Constraints
-- <budget / timeline / platform / compliance / team / data residency>
+- <budget / timeline / platform / compliance / team>
+
+## Known risks · assumptions · open questions
+- Risk: <…> · Assumption: <…> · Open question: <…>
 
 ## Profile (profiles/)
 - base: <web-app | api-service | library-sdk | data-ai>

@@ -1,15 +1,37 @@
-# Feature list: <project>
+# Feature spec: <feature>
 
-Step 1 of standards/11 §1. Each feature is stated clearly enough that a programmer — human or
-agent — couldn't build the wrong thing. Group by **big phase** (§2); **detail only the current
-phase** (§3), keep later phases as direction.
+The contract for **one feature** (standards/11 §3). **Owns:** scope, behavior, business rules,
+non-goals, acceptance. *What* the product wants — not *how* to build it (that's the
+implementation plan) or *why it was chosen* (that's a decision record).
 
-## Phase <N>: <goal of this phase — e.g. a minimal usable slice>
+- **Source:** <link to PROJECT_BRIEF + version/commit it derives from>
 
-| Feature | What it does | Acceptance (done = …) | Non-goal for this phase |
-|---|---|---|---|
-| <feature> | <behavior> | <observable result> | <explicitly deferred> |
+## Goal
+<the user or system outcome this feature delivers>
 
-## Later phases (direction only — do NOT detail yet, §2)
-- Phase <N+1>: <one line>
-- Phase <N+2>: <one line>
+## Actors
+- <who / what triggers and uses it>
+
+## Preconditions
+- <state that must hold before this applies>
+
+## Behavior & business rules
+- <the rules — inputs → outputs, ordering, calculations, constraints>
+
+## Edge & failure cases
+- <empty / invalid / conflicting / offline / over-limit → expected behavior>
+
+## Permission & data impact
+- <who may do it; what data is read/written; sensitivity — `standards/07`>
+
+## Non-functional requirements
+- <performance / a11y / latency / limits that apply — link the relevant standard/modifier>
+
+## Observable result (acceptance)
+- <what an accepter can see/verify that proves it works — the "done =" condition>
+
+## Non-goals
+- <explicitly out of scope for this feature>
+
+## Dependencies & open questions
+- <other features / decisions this needs; anything unresolved>
