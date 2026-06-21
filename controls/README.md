@@ -15,6 +15,10 @@ The framework's own automated checks — it runs these on itself in `framework-c
   `controls/workflow-policy.config.json` (`classify` / `shaExceptions` / `ignore`). Fixtures +
   test: `workflow-policy.test.mjs`.
 
+> `workflow-policy.mjs` is a **limited structural scanner**, not a full YAML engine. It
+> reports anything it cannot parse (**WF009 WARN**) rather than passing it silently, and leans
+> on the companion tools below for deeper syntax/security analysis.
+
 ## Recommended companion tools (optional — not bundled, not required)
 
 The wrapper above enforces the framework's deterministic rules. For deeper analysis it does

@@ -1,17 +1,14 @@
 name: deploy
-on:
-  pull_request_target:
+on: push
 permissions:
   contents: read
 concurrency:
   group: deploy
-  cancel-in-progress: false
+  cancel-in-progress: true
 jobs:
   deploy:
     runs-on: ubuntu-latest
     timeout-minutes: 30
     steps:
       - uses: actions/checkout@0123456789abcdef0123456789abcdef01234567 # v4
-        with:
-          ref: ${{ github.event.pull_request.head.sha }}
-      - run: ./scripts/build.sh
+      - run: ./scripts/deploy.sh

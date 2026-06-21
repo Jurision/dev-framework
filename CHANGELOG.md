@@ -21,7 +21,20 @@ which version it copied, so it can diff against later releases.
   the first `0.2` control and surfaces two checklist lessons (formatter-vs-gate scope;
   inventory *all* workflows, not just validation CI).
 
-_Next: `0.2` controls — `workflow-policy lint` first, then a live-revision assertion helper._
+### Fixed
+- **`workflow-policy` hardened** (review follow-up — make the checker trustworthy before
+  relying on it in required CI): WF004 now flags validation with **no** concurrency (was a
+  false negative fossilised in a fixture); WF003 distinguishes **job- vs step-level**
+  `timeout-minutes`; trigger parsing handles `on: push` scalar, `[...]` array, and block forms
+  (deploy workflows no longer slip through as "unknown"); **WF006 = dangerous-combination**
+  (privileged trigger + untrusted checkout/event-ref/artifact → FAIL; a safe
+  `pull_request_target` → WARN) and now covers `workflow_run`; WF002 accepts **job-level**
+  permissions; a malformed config **fails closed** (exit 2) instead of silently empty;
+  unparseable structures **WARN (WF009)**, never silently pass. Tests assert exit code,
+  severity, and line; +5 fixtures.
+
+_Next: `0.2` — a **live-revision assertion** control (grounded by the adoption deploy
+verification: the live `/health` exposed the deployed SHA)._
 
 ## [0.1.0-alpha] — 2026-06-21
 
