@@ -81,6 +81,18 @@ which version it copied, so it can diff against later releases.
   `06`); made the approval boundary **implementation-neutral** (queue / confirmation txn /
   policy engine / two-person / signed command / staged gate); narrowed the approval audit to
   actor / action / target / **version-digest** / decision / time (no full sensitive payload).
+- **`persistent-data`**: fixed `RGT`→`RTO` typo; abstracted "pre-migration snapshot" to a
+  **verified recovery point appropriate to the risk model** (snapshot / PITR / transactional
+  rollback / equivalent); restore-drill **cadence** set by RPO/RTO/change-rate/risk, not one
+  universal frequency.
+- **`multi-tenant`**: made implementation-neutral — tenant ownership may be **direct or
+  structural**; scoping at the **DB/RLS/repository/equivalent** boundary; uniqueness includes
+  the tenant scope **only where a business key needs it**; removed "retrofitting cost avoided"
+  as acceptance evidence.
+- **`protected-output`**: replaced byte/pixel stability with **declared semantic / structural
+  / visual dimensions + tolerance + normalization** (golden updates need reviewer
+  confirmation); `supplier` → **project-defined** sensitive fields; fail-before/pass-after
+  required only for real leak fixes.
 
 ### Governance
 - Repo made **public**; `main` **branch protection enabled** (PR required, `check` required,

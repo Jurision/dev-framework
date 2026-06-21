@@ -20,21 +20,24 @@ finding across all three dry-runs: backups exist, but **recovery is rarely verif
 2. **At least one copy in a separate failure domain** (off-site / different host / region /
    account).
 3. **A scheduled restore drill** (`standards/06` §5) — periodically **restore to a scratch
-   environment and verify usability** (business-integrity / row-count checks), on a schedule,
-   not only during an incident. **This is the rule the dry-runs most often fail (0/3
-   verified)** — raised to MUST here precisely because it's the common blind spot.
-4. **Track RPO and RGT/RTO** — define max acceptable data loss and downtime; the drill
-   measures whether you meet them.
-5. **A pre-migration recovery point** (`standards/10` §2) — an automated snapshot **before**
-   any schema migration runs in the pipeline, not just a runbook instruction.
+   environment and verify usability** (business-integrity / row-count checks), not only during
+   an incident. **This is the rule the dry-runs most often fail (0/3 verified)** — kept MUST
+   because it's the common blind spot. **Cadence** is set by RPO/RTO, change frequency, and
+   risk, not one universal frequency.
+4. **Track RPO and RTO** — define max acceptable data loss and downtime; the drill measures
+   whether you actually meet them.
+5. **A verified pre-migration recovery point** (`standards/10` §2) — before each production
+   migration, **automatically establish and verify a recovery point appropriate to the risk
+   model**: a snapshot, a PITR bookmark, a transactional rollback point, or equivalent — not a
+   fixed implementation, and not just a runbook instruction.
 6. **A written retention policy** (and, for personal data, deletion path + encryption — see
    `regulated` / `standards/07`).
 
 ## Rules that may relax
 
 - Nothing here relaxes a security or data-integrity invariant. "We have a runbook" does
-  **not** satisfy 3 or 5 — *documented ≠ executed*; the drill and the pre-migration snapshot
-  must actually run.
+  **not** satisfy 3 or 5 — *documented ≠ executed*; the drill and the pre-migration recovery
+  point must actually run and be verified.
 
 ## Required controls
 
