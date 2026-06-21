@@ -7,6 +7,11 @@ which version it copied, so it can diff against later releases.
 ## [Unreleased]
 
 ### Added
+- **`profiles/` composition model** — replaced "one project picks one profile" with **one
+  base workload + composable modifiers** (the three frozen dry-runs proved real projects are
+  mixed). Adds precedence-safe override rules (security/law never lowered; no silent
+  downgrades), a delta-only per-doc skeleton, and an `adoption-manifest.template.yml`. Base
+  and modifier docs follow in later PRs, generated from dry-run evidence.
 - `standards/10-data-and-migrations.md` — additive/forward-only migrations, pre-migration
   backup, **expand/contract** for breaking changes (rollback-safe), schema as reviewed single
   source of truth, **tenant scoping as a security boundary** (cross-tenant regression test),
