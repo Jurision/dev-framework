@@ -8,9 +8,14 @@ on:
 permissions:
   contents: read
 
+concurrency: # validation CI: cancelling superseded runs is correct here
+  group: framework-ci-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   check:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       # Third-party Actions are pinned to a commit SHA (standards/07 §1.7), with the
       # version tag in a trailing comment so updates stay reviewable.
@@ -19,3 +24,5 @@ jobs:
         with:
           node-version: 22
       - run: node controls/check.mjs
+      - run: node controls/workflow-policy.mjs # the framework lints its own workflows
+      - run: node controls/workflow-policy.test.mjs # fixtures for the workflow-policy lint

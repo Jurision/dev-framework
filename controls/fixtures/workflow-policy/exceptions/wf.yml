@@ -1,0 +1,15 @@
+name: ci
+on:
+  pull_request:
+permissions:
+  contents: read
+concurrency:
+  group: ci
+  cancel-in-progress: true
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: my-org/internal-action@v1
+      - run: echo ok

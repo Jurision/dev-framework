@@ -1,0 +1,15 @@
+name: deploy
+on:
+  pull_request_target:
+permissions:
+  contents: read
+concurrency:
+  group: deploy
+  cancel-in-progress: false
+jobs:
+  deploy:
+    runs-on: ubuntu-latest
+    timeout-minutes: 30
+    steps:
+      - uses: actions/checkout@0123456789abcdef0123456789abcdef01234567 # v4
+      - run: ./scripts/deploy.sh # release with secrets.TOKEN over ssh
