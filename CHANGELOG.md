@@ -7,6 +7,13 @@ which version it copied, so it can diff against later releases.
 ## [Unreleased]
 
 ### Added
+- **`standards/08` §13 — Session & context hygiene** — a session is **ephemeral working
+  memory, not the source of truth** (state lives in git + the implementation plan + memory),
+  so **bound context length** and **rotate on signals** (near-full window / multi-day /
+  thousands of turns / slowing or repeating output / rising stream-timeout errors), resuming a
+  fresh session from the plan + handoff. "Converge, don't accrete" applied to *context*;
+  applies to **humans and agents**. Distilled from a real incident — a multi-day agent session
+  degraded as its context saturated.
 - **`controls/assert-live-revision.mjs`** (0.2 — second control, implements #35) — asserts the
   **live system serves the intended release SHA** (`standards/06` §2). Zero-dependency; reads
   the actual revision from an HTTP **JSON field / response header / plain-text body** or a

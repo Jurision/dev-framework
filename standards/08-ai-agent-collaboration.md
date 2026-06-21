@@ -126,3 +126,30 @@ Make the rules above **checkable**, not aspirational: a lightweight audit script
 `git`/`gh`) can flag WIP-over-limit, stale branches, duplicate-topic branches, undeleted
 merged branches, and core-file growth, and report in plain language. What gets audited
 gets followed. See `standards/05-testing-and-audits.md`.
+
+## 13. Session & context hygiene *(SHOULD)*
+
+A working session (a chat / agent run) is **ephemeral working memory, not the source of
+truth.** The durable record lives in **git** (commits, branches, PRs), the **tracked issue +
+implementation plan / spec** (`standards/11`), and the **memory** layer (§11). Because state
+lives there, a session can be **rotated at any time without losing work** — a fresh session
+resumes from the plan and a handoff / phase report (`standards/09` §3, `standards/11` §6),
+not from the old chat.
+
+- **Bound session / context length.** A long-running, context-saturated session **degrades**:
+  each turn re-processes a near-full context window, so turns slow down, reasoning weakens,
+  and streaming/timeout failures rise. This is "converge, don't accrete" (§9) applied to
+  *context*.
+- **Rotate on signals, not a fixed number** (windows vary by tool and model): the context
+  window is near full, the session has run for days / thousands of turns, output is slowing or
+  repeating, or transport/stream errors are climbing. Start a **fresh session for a new unit
+  of work** rather than piling on.
+- **One concern per session** — mirror "one concern per PR" (§4) and the WIP limit (§3); don't
+  accumulate unrelated tasks in one giant session.
+- **Hand off through durable artifacts.** Before rotating, make sure the next session can
+  resume cold: the implementation plan is current, a **handoff / phase report** captures state
+  + evidence + next action, and any durable fact is in **memory** — never rely on a session's
+  scrollback as the record (claimed ≠ done, §5).
+
+This applies to **humans and agents** alike: an operator who keeps one endless session is
+accruing the same hidden cost as an agent that never rotates.
