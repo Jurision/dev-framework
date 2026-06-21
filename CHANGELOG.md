@@ -7,6 +7,10 @@ which version it copied, so it can diff against later releases.
 ## [Unreleased]
 
 ### Added
+- **`profiles/modifiers/protected-output.md`** (provisional) — pixel/format-locked documents
+  & exports: renderers move **verbatim**, **golden-fixture regression** in required CI, an
+  isolated zone, and **audience-correct output** (internal data excluded from external
+  exports, asserted by test).
 - **`profiles/modifiers/runtime-ai.md` + `human-in-the-loop.md`** (provisional) — AI
   modifiers. `runtime-ai`: per-call model/provider/prompt version, least-privilege tool
   permissions, limits/timeouts, graceful degradation, leak-free observability.
