@@ -73,7 +73,8 @@ stub)* · `base/library-sdk` 🚧 *(unevidenced stub)*.
 [`public-ui`](modifiers/public-ui.md) ✅ *(prov.)* ·
 [`persistent-data`](modifiers/persistent-data.md) ✅ *(prov.)* ·
 [`multi-tenant`](modifiers/multi-tenant.md) ✅ *(prov.)* ·
-[`runtime-ai`](modifiers/runtime-ai.md) ✅ *(prov.)* · `protected-output` 🚧 ·
+[`runtime-ai`](modifiers/runtime-ai.md) ✅ *(prov.)* ·
+[`protected-output`](modifiers/protected-output.md) ✅ *(prov.)* ·
 [`human-in-the-loop`](modifiers/human-in-the-loop.md) ✅ *(prov.)* · `team-maintained` /
 `solo-maintained` 🚧 · `regulated` 🚧 *(unevidenced stub)*.
 
