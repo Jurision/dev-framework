@@ -71,8 +71,9 @@ stub)* · `base/library-sdk` 🚧 *(unevidenced stub)*.
 
 **Modifiers** — [`internal-ui`](modifiers/internal-ui.md) ✅ *(prov.)* ·
 [`public-ui`](modifiers/public-ui.md) ✅ *(prov.)* ·
-[`persistent-data`](modifiers/persistent-data.md) ✅ *(prov.)* · `multi-tenant` 🚧
-· `runtime-ai` 🚧 · `protected-output` 🚧 · `human-in-the-loop` 🚧 · `team-maintained` /
+[`persistent-data`](modifiers/persistent-data.md) ✅ *(prov.)* ·
+[`multi-tenant`](modifiers/multi-tenant.md) ✅ *(prov.)* · `runtime-ai` 🚧 ·
+`protected-output` 🚧 · `human-in-the-loop` 🚧 · `team-maintained` /
 `solo-maintained` 🚧 · `regulated` 🚧 *(unevidenced stub)*.
 
 > **Scope of this PR:** the composition *mechanism* only (this README + the manifest

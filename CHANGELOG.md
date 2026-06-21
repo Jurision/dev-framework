@@ -7,6 +7,9 @@ which version it copied, so it can diff against later releases.
 ## [Unreleased]
 
 ### Added
+- **`profiles/modifiers/multi-tenant.md`** (provisional) — security-boundary modifier: tenant
+  key + per-tenant uniqueness, **query-layer default scoping** (schema key ≠ isolation), and a
+  **cross-tenant negative test as a required-CI MUST** (the proof the dry-run lacked).
 - **`profiles/modifiers/persistent-data.md`** (provisional, 3 dry-runs) — atomic/off-site
   backups, **scheduled restore drill** (raised to MUST against a 0/3 real-world record),
   RPO/RTO, pre-migration snapshot, retention. `live-revision` deliberately left in `06`
