@@ -7,6 +7,12 @@ which version it copied, so it can diff against later releases.
 ## [Unreleased]
 
 ### Added
+- **`checklists/` completed** (definition-of-done · pr-review · visual-review ·
+  new-project-bootstrap), **delivered via a standard-11 dogfood**: the framework used its own
+  spec → plan → report flow on real work (`delivery/`). The dry-run **validated the templates**
+  (cut ambiguity, prevented duplicate facts) and **surfaced one fix** applied in the same PR —
+  `11` §2 now says **scale the package to risk/size** (a delivery package heavier than the work
+  is a smell). Checklists are delta/pointer-style (cite the owning standard, don't restate).
 - **`standards/11-specification-and-delivery.md`** (NEW standard) + templates
   `PROJECT_BRIEF` / `FEATURE_SPEC` / `IMPLEMENTATION_PLAN` / `PHASE_REPORT` — the spec-driven,
   phased-delivery layer `00–10` lacked: **foundation before business code** (brief+features →
