@@ -6,8 +6,13 @@ which version it copied, so it can diff against later releases.
 
 ## [Unreleased]
 
-_Nothing yet. Next: `controls/` (live-revision assertion · cross-tenant negative test ·
-restore-drill scheduler), and broader profile validation against more real projects._
+### Added
+- `delivery/adoption-feedback/001-workflow-hardening.md` — desensitized findings from the
+  **first real-project adoption** (workflow hardening). Confirms **`workflow-policy lint`** as
+  the first `0.2` control and surfaces two checklist lessons (formatter-vs-gate scope;
+  inventory *all* workflows, not just validation CI).
+
+_Next: `0.2` controls — `workflow-policy lint` first, then a live-revision assertion helper._
 
 ## [0.1.0-alpha] — 2026-06-21
 
