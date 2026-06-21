@@ -103,6 +103,15 @@ which version it copied, so it can diff against later releases.
 - **`profiles/examples/`**: removed the spurious `02 brand` "exception" (composition, not a
   relaxation); all three manifests now disclaim `exceptions: [] # …does not prove compliance`
   (a selection ≠ proof the required controls exist).
+- **Consistency sweep (hardening changed the top, not the bottom/core):** unified the
+  migration recovery point across **`standards/06` + `standards/10` + `persistent-data`**
+  (snapshot → **risk-appropriate recovery point**: snapshot / PITR / transactional rollback /
+  equivalent) — resolves a real **precedence contradiction** (core said snapshot-MUST while the
+  profile allowed flexibility, and stricter-core-wins). Synced `public-ui` acceptance evidence
+  to its now-conditional rules; widened `runtime-ai` eval to **non-displayed** model paths
+  (backend classification / risk scoring); `multi-tenant` applies to **any tenant topology**;
+  `protected-output` "identical" → "identical **on the declared dimensions**"; example wording
+  aligned.
 
 ### Governance
 - Repo made **public**; `main` **branch protection enabled** (PR required, `check` required,

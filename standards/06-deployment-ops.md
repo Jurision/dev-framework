@@ -43,7 +43,8 @@ The most expensive outage is the one that **destroys data on deploy**.
   half-written backup restores to corruption.
 - **Scheduled** and **monitored**: a silent backup failure is the default way backups die.
   Alert when a backup is missed.
-- **Snapshot before every schema migration** (a pre-migration hook), so a bad migration has
+- **Establish and verify a risk-appropriate recovery point before every schema migration**
+  (snapshot / PITR bookmark / transactional rollback point / equivalent), so a bad migration has
   an immediate recovery point (`standards/10`).
 - At least one copy in a **separate failure domain** (different host/region/account) — a
   backup on the box that dies with the box is not a backup.

@@ -23,7 +23,9 @@ core changes. Graded **MUST / SHOULD / MAY**.
 
 ## 2. Backed up before it runs *(MUST for persistent production data)*
 
-- **Snapshot before every schema migration** (the pre-migration hook, `standards/06` §4) so a
+- **Establish and verify a risk-appropriate recovery point before every schema migration**
+  (snapshot / PITR / transactional rollback / equivalent; the pre-migration hook,
+  `standards/06` §4) so a
   bad migration has an immediate, tested restore point (`standards/06` §5). A migration
   without a recovery point is a gamble with the one thing you can't rebuild.
 

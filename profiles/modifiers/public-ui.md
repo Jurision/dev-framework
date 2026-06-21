@@ -46,8 +46,9 @@ content-driven). Delta over `00–10` for what a *public* surface adds beyond th
 
 ## Acceptance evidence
 
-- Sitemap + link-graph checks **green in required CI**; the production synthetic check runs
-  on a schedule and asserts content (not status alone); a content↔render parity check exists.
+- Link-graph check **green in required CI**; **for indexable surfaces**, sitemap/canonical are
+  verified; **if a separate content source exists**, a content↔render parity check exists; the
+  scheduled synthetic check asserts the **declared key public effect** (not status alone).
 
 ## Non-goals (owned elsewhere)
 
