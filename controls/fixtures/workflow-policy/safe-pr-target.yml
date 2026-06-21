@@ -1,0 +1,15 @@
+name: label
+on:
+  pull_request_target:
+    types: [opened]
+permissions:
+  contents: read
+concurrency:
+  group: label-${{ github.ref }}
+  cancel-in-progress: false
+jobs:
+  label:
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    steps:
+      - uses: actions/labeler@0123456789abcdef0123456789abcdef01234567 # v5
