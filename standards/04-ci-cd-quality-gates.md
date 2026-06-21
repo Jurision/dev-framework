@@ -5,7 +5,7 @@ applicable gate inventory**; **all required gates must pass before merge.** Scor
 independent axes** — what it checks (**coverage**) and whether the pipeline itself is safe
 (**hardening**) — plus a per-gate **enforcement** state. A project can be strong on one axis
 and weak on the other; don't collapse them into one "has CI" verdict. Copyable, hardened
-workflows live in `templates/workflows/` (`ci-node.yml.template`, `ci-generic.yml.template`).
+workflows live in `templates/workflows/` (`ci-node`, `ci-python`, `ci-generic`).
 
 ## Axis 1 — Gate coverage *(does every applicable risk have automated evidence?)*
 

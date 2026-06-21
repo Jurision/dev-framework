@@ -51,7 +51,7 @@ Ready now (✅) vs outline-only (🚧):
    (e.g. a `CLAUDE.md` that imports `@AGENTS.md`). **Verify it is in effect; don't assume.**
 3. ✅ Add `templates/PULL_REQUEST_TEMPLATE.md` and `templates/CODEOWNERS`.
 4. ✅ Wire the quality gates from `standards/04-ci-cd-quality-gates.md` into CI — copy a
-   workflow from `templates/workflows/` (`ci-node` / `ci-generic`), add a file-size tripwire,
+   workflow from `templates/workflows/` (`ci-node` / `ci-python` / `ci-generic`), add a file-size tripwire,
    and make them **required** checks. 04 grades CI on **coverage + workflow hardening +
    per-gate enforcement**.
 5. 🚧 Walk `checklists/new-project-bootstrap.md` (outline) and tick the rest.
