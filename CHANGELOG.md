@@ -7,6 +7,11 @@ which version it copied, so it can diff against later releases.
 ## [Unreleased]
 
 ### Added
+- **`profiles/base/data-ai.md`** (provisional, first base profile) — the data/analysis
+  workload **delta only**: provenance + lineage, versioned transforms, deterministic-stage
+  tests vs **versioned eval sets + thresholds** for model output, a **blocking data-quality
+  gate**, and "process-audit ≠ build/test gate". Cross-refs `07`/modifiers instead of
+  restating them (read-only AI path, backups, UI, side-effects live elsewhere).
 - **`profiles/` composition model** — replaced "one project picks one profile" with **one
   base workload + composable modifiers** (the three frozen dry-runs proved real projects are
   mixed). Adds precedence-safe override rules (security/law never lowered; no silent
