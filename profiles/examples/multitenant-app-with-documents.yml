@@ -1,0 +1,17 @@
+# Example adoption manifest — archetype: authenticated multi-tenant web app that generates
+# pixel/format-locked trade/financial documents.
+# Illustrative, desensitized from a real dry-run; not a specific project.
+
+framework_version: 0.1.0-alpha
+base_profile: web-app
+modifiers:
+  - internal-ui          # authenticated operator-facing app
+  - persistent-data      # production database; backups + restore drill + pre-migration snapshot
+  - multi-tenant         # workspace isolation = security boundary (cross-tenant negative test MUST)
+  - protected-output     # locked documents + customer-safe exports (internal data excluded by test)
+calibrations:
+  wip_cap: 3
+  stale_days: 10
+  component_max_lines: 800
+  logic_max_lines: 500
+exceptions: []           # none — running the full defaults

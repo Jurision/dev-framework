@@ -7,6 +7,9 @@ which version it copied, so it can diff against later releases.
 ## [Unreleased]
 
 ### Added
+- **`profiles/examples/`** — three **desensitized** adoption-manifest examples (data-AI
+  workbench · public content web · multi-tenant document app) generated from the frozen
+  dry-runs. The two web shapes compose differently, validating base+modifiers end-to-end.
 - **`profiles/modifiers/protected-output.md`** (provisional) — pixel/format-locked documents
   & exports: renderers move **verbatim**, **golden-fixture regression** in required CI, an
   isolated zone, and **audience-correct output** (internal data excluded from external

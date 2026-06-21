@@ -1,0 +1,15 @@
+# Example adoption manifest — archetype: public content/marketing site + internal admin.
+# Illustrative, desensitized from a real dry-run; not a specific project.
+
+framework_version: 0.1.0-alpha
+base_profile: web-app
+modifiers:
+  - public-ui            # indexed, brand-exposed public pages (SEO, link-graph, synthetic checks)
+  - internal-ui          # an internal admin / operator panel
+  - persistent-data      # content database that must be backed up + restore-drilled
+calibrations:
+  wip_cap: 5
+  stale_days: 14
+exceptions: []           # none — running the framework/profile defaults
+# Note: NOT multi-tenant (single site) — so the multi-tenant modifier is simply not added,
+# which is the composable model working, not an exception.
