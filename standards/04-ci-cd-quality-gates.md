@@ -1,8 +1,8 @@
 # 04 — CI/CD quality gates
 
 CI is where written rules become **enforced** rules (`standards/00` §6). Every PR runs the
-gate stack; nothing merges red. A copyable, hardened workflow lives in
-`templates/workflows/ci.yml.template`.
+gate stack; nothing merges red. Copyable, hardened workflows live in
+`templates/workflows/` (`ci-node.yml.template`, `ci-generic.yml.template`).
 
 ## 1. The gate stack *(MUST — every PR, all green to merge)*
 

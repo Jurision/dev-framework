@@ -1,9 +1,10 @@
-# Copyable CI workflow — the gate stack from standards/04, hardened per standards/07.
-# Copy to .github/workflows/ci.yml and fill the <FILL> commands for your stack.
+# Copyable CI workflow — **Node / JS variant** (team-web / node profile). The gate stack from
+# standards/04, hardened per standards/07. For other stacks see ci-generic.yml.template
+# (language-agnostic skeleton); a Python variant is expected to come out of the first
+# real-project dry-run.
 #
-# Hardening baked in: SHA-pinned Actions, least-privilege token, concurrency cancel,
-# per-job timeout. Make this check a REQUIRED status check in branch protection
-# (standards/03 §4) so it actually blocks merges.
+# Copy to .github/workflows/ci.yml and fill the <FILL> commands. Make this check a REQUIRED
+# status check in branch protection (standards/03 §4) so it actually blocks merges.
 
 name: ci
 
@@ -12,11 +13,9 @@ on:
   push:
     branches: [main]
 
-# Least privilege: read-only by default. Grant more only on the job that needs it.
 permissions:
   contents: read
 
-# Cancel superseded runs on the same ref to save minutes and avoid races.
 concurrency:
   group: ci-${{ github.ref }}
   cancel-in-progress: true
@@ -26,8 +25,8 @@ jobs:
     runs-on: ubuntu-latest
     timeout-minutes: 15
     steps:
-      # Pin third-party Actions to a commit SHA; keep the version in the comment so
-      # updates stay reviewable. Re-pin when you intentionally bump.
+      # Pin third-party Actions to a commit SHA; keep the version in the comment so updates
+      # stay reviewable. Re-pin when you intentionally bump.
       - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
       - uses: actions/setup-node@49933ea5288caeca8642d1e84afbd3f7d6820020 # v4
         with:

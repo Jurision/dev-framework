@@ -16,15 +16,16 @@ which version it copied, so it can diff against later releases.
   append-only), docs-as-code (change in the same PR), generate-don't-duplicate, keep-current.
 - `standards/02-ui-design-system.md` — named design target (adjective pairs), tokens-not-
   magic-values, hard visual rules (no fake/dead controls, no invented URLs), WCAG 2.2 AA as
-  a release criterion, the **visual review gate** (approve before push), protected zones.
+  a release criterion, the **visual review gate** (rendered-output review before merge),
+  protected zones.
 - `standards/05-testing-and-audits.md` — test pyramid + isolation, fail-before/pass-after
   regression evidence, **journey/entity audits** ("200 ≠ healthy"), and process-compliance
-  audits (the framework runs this on itself).
+  audits (the repo's own check does doc-consistency; process audit is a next-layer control).
 - `standards/06-deployment-ops.md` — deploy-from-trunk, **deploy-revision lockstep**, state
   outside the artifact, atomic/off-site backups + pre-migration snapshot, **restore drills**
   (RPO/RTO), first-class rollback, health/alerting on user-visible symptoms, runbooks,
   per-environment config & secrets.
-- `standards/04-ci-cd-quality-gates.md` + `templates/workflows/ci.yml.template` — the gate
+- `standards/04-ci-cd-quality-gates.md` + `templates/workflows/` CI workflows — the gate
   stack, required checks, and a **hardened, copyable** workflow (SHA-pinned Actions,
   least-privilege token, concurrency cancel, per-job timeout).
 - `standards/03-git-workflow.md` — trunk-based development, branch & commit rules
@@ -35,6 +36,22 @@ which version it copied, so it can diff against later releases.
 - Repo made **public**; `main` **branch protection enabled** (PR required, `check` required,
   conversation resolution, linear history, no force-push/deletion; admin break-glass kept).
   Governance is now **platform-enforced**, not just convention.
+
+### Fixed (pre-dry-run consistency)
+- **Self-check overclaims corrected (05, 09).** `controls/check.mjs` does *doc-consistency*
+  only; the process audit (05 §4) and rendering/anchor/example checks (09 §3) are now marked
+  explicitly as not-yet-implemented next-layer controls.
+- **06 deploy assertion** fixed to `live == intended release SHA` (not `== trunk` — trunk can
+  advance during a deploy and falsely flag a correct release).
+- **06 health checks** split into **liveness / readiness / synthetic journey monitoring** (a
+  journey check inside a liveness probe causes restart storms on dependency blips).
+- **05 pure-refactor** relaxed: invariant is unchanged observable behavior, not "zero test
+  edits in the commit".
+- **02 visual review** generalized to "rendered-output review before merge/release";
+  approve-**before-push** moved to a high-control profile.
+- **10 migration MUSTs** scoped to persistent-production-data / zero-downtime; relaxed for
+  rebuildable / local / PITR systems.
+- **CI template** split into `ci-node` + `ci-generic` (the single template had assumed Node).
 
 ### Earlier in this cycle
 - Self-enforcement: `controls/check.mjs` + `framework-ci` (the framework checks itself).

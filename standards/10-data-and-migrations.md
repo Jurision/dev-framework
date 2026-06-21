@@ -4,6 +4,14 @@ Code is replaceable; **data is not**. Schema changes are the highest-blast-radiu
 operation, so they get the most discipline: additive, reversible, backed up, and reviewed as
 core changes. Graded **MUST / SHOULD / MAY**.
 
+> **Calibrate by data-system type.** The MUSTs below assume **persistent production data** —
+> an always-on store you cannot simply rebuild. For rebuildable / local / SQLite / test data,
+> a framework with a transactional migration ledger, a system that can take a maintenance
+> window, or a very large DB that relies on **PITR** rather than per-migration snapshots,
+> several rules (per-migration snapshot, dual-write, full expand/contract) relax to
+> **SHOULD** or "choose by risk" (see `profiles/`). What stays **MUST everywhere**: never
+> edit a shipped migration, and always have a known recovery path.
+
 ## 1. Migrations are additive & forward-only *(MUST)*
 
 - **Never edit a shipped migration** — once it has run anywhere, it is immutable; add a new
@@ -13,13 +21,13 @@ core changes. Graded **MUST / SHOULD / MAY**.
 - Migrations are **ordered and idempotent-safe** to re-run/resume; a half-applied migration
   must not corrupt state.
 
-## 2. Backed up before it runs *(MUST)*
+## 2. Backed up before it runs *(MUST for persistent production data)*
 
 - **Snapshot before every schema migration** (the pre-migration hook, `standards/06` §4) so a
   bad migration has an immediate, tested restore point (`standards/06` §5). A migration
   without a recovery point is a gamble with the one thing you can't rebuild.
 
-## 3. Expand / contract for breaking changes *(MUST)*
+## 3. Expand / contract for breaking changes *(MUST for zero-downtime systems; else SHOULD)*
 
 To change a schema without a flag-day outage, split it across deploys so each step is
 backward-compatible and reversible:

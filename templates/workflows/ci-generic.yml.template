@@ -1,0 +1,41 @@
+# Copyable CI workflow — **language-agnostic skeleton**. The gate stack from standards/04,
+# hardened per standards/07, with no toolchain assumed. Pick/add the setup step your stack
+# needs (a Node variant is ci-node.yml.template). Make this check a REQUIRED status check in
+# branch protection (standards/03 §4) so it actually blocks merges.
+
+name: ci
+
+on:
+  pull_request:
+  push:
+    branches: [main]
+
+permissions:
+  contents: read
+
+concurrency:
+  group: ci-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    steps:
+      # Pin third-party Actions to a commit SHA; keep the version in a trailing comment.
+      - uses: actions/checkout@34e114876b0b11c390a56381ad16ebd13914f8d5 # v4
+
+      # Set up your toolchain here, pinned. Examples (pick one, pin to a SHA):
+      #   - uses: actions/setup-node@<sha>    # v4
+      #   - uses: actions/setup-python@<sha>  # v5
+      #   - uses: actions/setup-go@<sha>      # v5
+      - run: "<FILL: set up + cache the toolchain for your language>"
+
+      - run: "<FILL: install dependencies, locked>"
+
+      # The gate stack (standards/04 §1). Prefer one composite command so local == CI.
+      - run: "<FILL: typecheck / build / compile>"
+      - run: "<FILL: lint — includes the file-size tripwire>"
+      - run: "<FILL: format check — verify, not reformat>"
+      - run: "<FILL: unit tests>"
+      - run: "<FILL: smoke / e2e on the critical journey>"
