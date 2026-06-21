@@ -15,18 +15,23 @@ content-driven). Delta over `00–10` for what a *public* surface adds beyond th
 
 ## Rules raised to MUST
 
-1. **Discoverability contract.** A valid **sitemap**, correct meta/canonical tags, and stable
-   public URLs are verified in CI (not hand-checked).
+1. **Discoverability contract — for indexable surfaces.** If the surface is meant to be
+   indexed, a valid **sitemap**, correct meta/canonical tags, and stable public URLs are
+   verified in CI. A deliberately `noindex` public tool or login page is exempt from
+   sitemap/canonical (but not from the rest).
 2. **Public link-graph integrity.** **No dead or fake public links** (`standards/02` hard
    rule + `standards/05` journey audit): internal links resolve, no `href="#"`, no link to a
    page that 404s.
-3. **Content ↔ render parity.** Published content matches what renders (a content-source vs
-   rendered-output check), so the public site can't silently drift from its source of truth.
+3. **Content ↔ render parity — when there is a separate content source.** If a CMS / content
+   store feeds the pages, a content-source vs rendered-output check ensures the site can't
+   silently drift from its source of truth. (Products without a separate content source skip
+   this.)
 4. **Full visual target + WCAG 2.2 AA on public pages** (`standards/02`): public surfaces
    carry brand and legal-accessibility exposure — tokens, responsive behavior, and rendered
    review apply without exception.
-5. **Synthetic content monitoring** of production (`standards/06` §7): the scheduled health
-   check asserts **content markers** (key text, sitemap, error fallbacks), not just HTTP 200.
+5. **Synthetic monitoring of the key public effect** (`standards/06` §7): the scheduled check
+   asserts the **product's real public outcome**, not just HTTP 200 — for a content site that
+   is content/sitemap markers; for a public app it is the key public journey.
 
 ## Rules that may relax
 
@@ -35,8 +40,9 @@ content-driven). Delta over `00–10` for what a *public* surface adds beyond th
 
 ## Required controls
 
-- CI checks: **sitemap presence + public link-graph** (no dead links).
-- A **scheduled synthetic content check** in production (content markers, not just 200).
+- CI checks: **public link-graph** (no dead links — universal) + **sitemap/canonical for
+  indexable surfaces**.
+- A **scheduled synthetic check** of the key public effect in production (not just 200).
 
 ## Acceptance evidence
 

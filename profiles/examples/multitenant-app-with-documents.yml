@@ -14,4 +14,4 @@ calibrations:
   stale_days: 10
   component_max_lines: 800
   logic_max_lines: 500
-exceptions: []           # none — running the full defaults
+exceptions: []           # no documented rule relaxations; this does not prove compliance

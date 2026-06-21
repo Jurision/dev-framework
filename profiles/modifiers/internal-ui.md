@@ -15,21 +15,21 @@ internal audience does **not** exempt a UI from `standards/02`.
 
 ## Rules raised to MUST
 
-1. **`standards/02` applies in full to internal UIs.** State design (loading / empty / error
-   / disabled for every control), keyboard operability, real controls (**no dead/fake
-   controls** — dense operator tools are where these hide), and **rendered-output review
-   before merge/release**.
+1. **`standards/02` applies in full to internal UIs.** Design **tokens + consistency**, state
+   design (loading / empty / error / disabled for every control), keyboard operability and
+   **focus order**, real controls (**no dead/fake controls** — dense operator tools are where
+   these hide), and **rendered-output review before merge/release**.
 2. **Accessibility ≥ WCAG 2.2 AA** still holds. "Internal-only" is not an a11y waiver;
    operators use these tools all day — keyboard and focus order matter **more**, not less.
 3. **Density is designed, not accidental.** High-information operator screens get explicit
    layout/scan-order/state decisions, not a dump of fields.
 
-## Rules that may relax
+## Not triggered here (NOT an exception to document)
 
-- **Marketing/brand polish and public-conversion concerns do not apply** (those are
-  `public-ui`). a11y, state design, and real-controls do **not** relax.
-- SEO/sitemap/indexing: **not applicable** (internal surfaces aren't indexed) — see
-  `public-ui`.
+- **Public brand expression, SEO/sitemap/indexing, and marketing-conversion** simply **don't
+  apply** to an internal surface. These are **not relaxations to record in the manifest** —
+  they're `public-ui` concerns you didn't opt into. a11y, state design, tokens, and
+  real-controls do **not** relax.
 
 ## Required controls
 

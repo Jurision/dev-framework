@@ -93,6 +93,16 @@ which version it copied, so it can diff against later releases.
   / visual dimensions + tolerance + normalization** (golden updates need reviewer
   confirmation); `supplier` → **project-defined** sensitive fields; fail-before/pass-after
   required only for real leak fixes.
+- **`internal-ui`**: reframed "may relax" → **"not triggered (not an exception)"** — public
+  brand/SEO/marketing don't apply to internal surfaces and aren't documented relaxations;
+  added tokens/consistency + focus order to the MUST.
+- **`public-ui`**: made the content-site rules **conditional** — sitemap/canonical only for
+  **indexable** surfaces, content↔render parity only with a **separate content source**,
+  synthetic monitoring verifies the **product's key public effect** (not universally text
+  markers).
+- **`profiles/examples/`**: removed the spurious `02 brand` "exception" (composition, not a
+  relaxation); all three manifests now disclaim `exceptions: [] # …does not prove compliance`
+  (a selection ≠ proof the required controls exist).
 
 ### Governance
 - Repo made **public**; `main` **branch protection enabled** (PR required, `check` required,

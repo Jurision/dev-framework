@@ -10,6 +10,6 @@ modifiers:
 calibrations:
   wip_cap: 5
   stale_days: 14
-exceptions: []           # none — running the framework/profile defaults
+exceptions: []           # no documented rule relaxations; this does not prove compliance
 # Note: NOT multi-tenant (single site) — so the multi-tenant modifier is simply not added,
 # which is the composable model working, not an exception.
