@@ -1,19 +1,31 @@
 # Phase report — <phase / sub-phase>
 
-The agent reports these three; the owner **accepts before the next sub-phase** (standards/11
-§6). No code-reading required — answers in plain language, claims **git-verifiable**
-(`standards/08` §5).
+The agent's report is **input to acceptance, not acceptance itself** (standards/11 §6). It
+helps **product acceptance** (plain language, no code-reading); it does **not** replace
+**technical verification** (independent review of the diff/tests/security/running evidence).
 
-## 1. Done vs not done (against the implementation plan)
-- **Done:** <items, citing the plan's steps>
-- **Not done / deferred:** <items + why>
+## Reported by
+<agent / implementer>
 
-## 2. What changed
-- **Changed (files / behavior):** <list — citable by commit hash>
-- **Omissions:** <none / …>
-- **Over-doing (anything not in this phase's scope):** <none / …>
+## Record
+- **Plan revision:** <which implementation plan + version>
+- **PR / commit range:** <#PR · sha..sha — git-verifiable, `standards/08` §5>
+- **Changed files:** <list>
 
-## 3. Verification & next
-- **Verified by:** <command / test / observable> → **result:** <pass / fail + evidence>
-- **Next sub-phase:** <which> — **why:** <reason; must match the plan — if it doesn't, that's
-  drift, pull back>
+## Evidence
+- **CI run:** <link / status>
+- **Test output:** <fail-before/pass-after for fixes; results>
+- **Runtime proof:** <screenshot / endpoint / observable effect — "200 ≠ healthy", `05`>
+- **Known risks:** <…>
+
+## Deviations (against the plan)
+- **Omitted:** <…>
+- **Added outside scope:** <…>
+- **Open issues:** <…>
+
+## Decisions
+- **Product acceptance:** Accepted | Rejected | Needs changes — **by:** <owner>
+- **Technical verification:** Passed | Failed | Pending — **by:** <reviewer>
+
+> Acceptance proceeds to the next checkpoint only when **both** are satisfied
+> (`standards/00` two roles; claimed ≠ done).

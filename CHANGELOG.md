@@ -83,6 +83,29 @@ which version it copied, so it can diff against later releases.
   (Conventional Commits / SemVer), profile-graded WIP/staleness, and branch-protection
   guidance (with the GitHub private-repo plan caveat).
 
+### Fixed (standard-11 hardening — review follow-up)
+- **Two-stage agent contract:** a **bootstrap** contract (security / permissions / no
+  direct-push / evidence / adapter+verify) exists from repo creation; the **project-specific**
+  contract is filled after brief/stack/architecture — replaces "write `AGENTS.md` 4th" and
+  "the tool auto-reads it" (aligns `08`).
+- **Foundation is *stable by default, not immutable*** — change it through the front door
+  (impact assessment + ADR + migration/rollback + updated spec/plan), not "never dig it up".
+  Tech-stack criteria broadened beyond "the agent knows best" (maintainability, security
+  lifecycle, reversibility, lock-in).
+- **Delivery package, not one-doc-rules-all** — brief / feature-spec / ADR / plan / report
+  each own one set of facts and link; **un-conflates feature spec vs implementation plan**
+  (the `09` §3 distinction the first draft had collapsed); reference versioned requirements +
+  a traceability check instead of re-pasting a copy.
+- **Acceptance is two roles** — product acceptance (plain language, no code-reading) is **not**
+  technical verification; the agent's report is **input, not a substitute** for independent
+  review of diff / tests / security / running evidence (`00` two roles; claimed ≠ done).
+- Architecture step reframed as a **walking skeleton** (smallest production-shaped slice), not
+  a fixed infra checklist; per-sub-phase stops → **risk-calibrated acceptance checkpoints**.
+- **Templates:** expanded `PROJECT_BRIEF`; split the feature list into `FEATURE_LIST` + a real
+  `FEATURE_SPEC`; expanded `IMPLEMENTATION_PLAN` (sources/ADR/risk/impact/rollback/checkpoints/
+  approver); `PHASE_REPORT` separates **product acceptance vs technical verification**; added
+  `HANDOFF`.
+
 ### Fixed (profile hardening — review follow-up)
 - **`runtime-ai`**: added a **minimum runtime-model eval gate** (versioned eval set +
   threshold check in required CI on model/prompt/tool/retrieval change) — closes the
