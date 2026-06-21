@@ -16,10 +16,15 @@ irreversible actions") for AI-suggested side effects.
 ## Rules raised to MUST
 
 1. **AI drafts; a human commits.** The system **proposes**; a person performs the explicit,
-   irreversible step. No autonomous send / delete / permission-change / payment / deploy.
-2. **The boundary is enforced in code, not convention.** The AI path **cannot call the
-   side-effecting API directly** — it queues a draft/approval; only a human-triggered,
-   authenticated action executes it. (The dry-run's "AI drafts, human sends" is the model.)
+   irreversible step. No **model-initiated / model-decided** send / delete / permission-change
+   / payment / production deploy. *(This forbids an **AI** triggering a high-risk action — not
+   a deterministic CI/CD release from a reviewed PR on a protected trunk, which `standards/06`
+   requires. That is human-decided automation, not an autonomous AI action.)*
+2. **A code-level approval boundary the model path cannot bypass.** The AI path **cannot call
+   the side-effecting API directly**; only a human-triggered, authenticated action executes
+   it. The mechanism is **implementation-neutral** — an approval queue, a confirmation
+   transaction, a policy engine, two-person approval, a signed command, or a staged promotion
+   gate all qualify. (The dry-run's "AI drafts, human sends" is one such model.)
 3. **Approvals are attributable and audited.** Who approved what, when — recorded, so a
    side effect is always traceable to a human decision (`standards/07` §2.6).
 4. **The human sees what they're approving** — the exact content/recipients/effect is shown
@@ -31,8 +36,10 @@ irreversible actions") for AI-suggested side effects.
 
 ## Required controls
 
-- A **draft/approve queue** between AI output and any side-effecting API; an **audit log** of
-  approvals (actor + payload + time).
+- A **code-level approval boundary** (any implementation above) between AI output and any
+  side-effecting API; an **approval audit** recording **actor, action type, target,
+  version/digest, decision, time** — sensitive content via a **protected reference, not copied
+  into the log** (`standards/07` no-PII/secrets-in-logs).
 
 ## Acceptance evidence
 

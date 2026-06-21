@@ -70,6 +70,18 @@ which version it copied, so it can diff against later releases.
   (Conventional Commits / SemVer), profile-graded WIP/staleness, and branch-protection
   guidance (with the GitHub private-repo plan caveat).
 
+### Fixed (profile hardening — review follow-up)
+- **`runtime-ai`**: added a **minimum runtime-model eval gate** (versioned eval set +
+  threshold check in required CI on model/prompt/tool/retrieval change) — closes the
+  `web-app + runtime-ai` hole where output quality had **no** gate. Changed "no PII in
+  prompts" to **PII governance** (minimize + approved provider + consent/retention/region
+  policy; raw PII out of logs; **secrets still absolutely barred** from model context).
+- **`human-in-the-loop`**: distinguished a forbidden **AI-initiated/decided** production
+  action from an allowed **deterministic CI/CD release** (reviewed PR + protected trunk, per
+  `06`); made the approval boundary **implementation-neutral** (queue / confirmation txn /
+  policy engine / two-person / signed command / staged gate); narrowed the approval audit to
+  actor / action / target / **version-digest** / decision / time (no full sensitive payload).
+
 ### Governance
 - Repo made **public**; `main` **branch protection enabled** (PR required, `check` required,
   conversation resolution, linear history, no force-push/deletion; admin break-glass kept).
