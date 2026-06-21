@@ -7,6 +7,15 @@ which version it copied, so it can diff against later releases.
 ## [Unreleased]
 
 ### Added
+- **`standards/11-specification-and-delivery.md`** (NEW standard) + templates
+  `PROJECT_BRIEF` / `FEATURE_SPEC` / `IMPLEMENTATION_PLAN` / `PHASE_REPORT` — the spec-driven,
+  phased-delivery layer `00–10` lacked: **foundation before business code** (brief+features →
+  stack decision → architecture scaffold → AGENTS.md, in order; don't dig up the foundation),
+  **just-in-time per-phase implementation source-of-truth doc** (single source; chat ideas
+  must be written back), the **foundation-impact gate**, **phase-gated execution with drift
+  control**, and **acceptance from evidence (a 3-question report), not code-reading**.
+  Realizes the `09` 'planned standards/11' pointer. Distilled from a delivery methodology +
+  the three repos' real spec/handoff usage.
 - **`templates/workflows/ci-python.yml.template`** — Python validation-CI variant (pinned
   `setup-python`, the two-axis coverage/hardening/enforcement structure, pytest + optional
   ruff/mypy gates, profile-gate placeholder), produced from the Python dry-run. Templates now

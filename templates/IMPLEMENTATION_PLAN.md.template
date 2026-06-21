@@ -1,0 +1,25 @@
+# Implementation plan — Phase <N>: <goal>
+
+**The single source of truth for this phase (standards/11 §3).** Development *and* acceptance
+both follow it. A chat idea is **not a change until it is written back here.**
+
+- **In scope:** <what this phase builds>
+- **Out of scope / do NOT touch:** <foundation (stack/structure/schema/auth/payment) +
+  later-phase items — §4>
+- **Profile-required gates that apply:** <cross-tenant test / model eval / data-quality /
+  protected-output regression / …>
+
+## Sub-phase <N.1>: <name>
+
+1. <step — what to do>
+   - **Done =** <what counts as complete>
+   - **Verify by:** <test / command / observable effect>
+   - **Don't touch:** <boundary>
+2. <step …>
+
+## Sub-phase <N.2>: <name>
+
+1. <step …>
+
+## Open questions — resolve BEFORE any code (§3)
+- <re-paste original requirements and list any conflict with this plan, or "none">
