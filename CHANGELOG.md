@@ -152,6 +152,12 @@ which version it copied, so it can diff against later releases.
   "live == **immutable release SHA**" (aligns with `06`). Both CI templates synced
   (coverage/hardening/enforcement comments, a profile-gate placeholder, `team-web`→`web-app`,
   fillable trunk name).
+- **`standards/09` decision-record semantics fixed** — decoupled the **filing** (path/name
+  MAY vary: `adr/`, `docs/decisions/`, or a decision section inside a spec) from the
+  **semantics** (context + alternatives + consequences + status — MUST). Added §3
+  distinguishing the four document jobs: **ADR / feature spec / implementation plan / handoff
+  are NOT interchangeable** (a handoff is not a decision record). Points to a planned
+  `standards/11`. (Corrects the earlier "treat them as interchangeable" over-flattening.)
 - Corrected the `AGENTS.md` cross-tool claim: it is the *preferred* source, but tools
   discover it differently and may need an adapter; it is context, not enforcement.
 - Definition of Done is now evidence-by-change-type, not "every change needs a test".
