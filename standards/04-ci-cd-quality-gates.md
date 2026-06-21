@@ -1,61 +1,83 @@
 # 04 — CI/CD quality gates
 
-CI is where written rules become **enforced** rules (`standards/00` §6). Every PR runs the
-gate stack; nothing merges red. Copyable, hardened workflows live in
-`templates/workflows/` (`ci-node.yml.template`, `ci-generic.yml.template`).
+CI is where written rules become **enforced** rules (`standards/00` §6). Every PR runs **its
+applicable gate inventory**; **all required gates must pass before merge.** Score CI on **two
+independent axes** — what it checks (**coverage**) and whether the pipeline itself is safe
+(**hardening**) — plus a per-gate **enforcement** state. A project can be strong on one axis
+and weak on the other; don't collapse them into one "has CI" verdict. Copyable, hardened
+workflows live in `templates/workflows/` (`ci-node.yml.template`, `ci-generic.yml.template`).
 
-## 1. The gate stack *(MUST — every PR, all green to merge)*
+## Axis 1 — Gate coverage *(does every applicable risk have automated evidence?)*
 
-Run, in order (fail fast):
+Not "run these five commands". Each project maintains a small **risk → evidence** inventory;
+a risk is `Applies` or `N/A`, and **`N/A` needs a written reason — not a silently deleted
+command.**
 
-1. **Typecheck / build** — the code compiles.
-2. **Lint** — including the **file-size tripwire** (`standards/01` §3). Lint errors fail;
-   never delete a gate to go green.
-3. **Format check** — formatting is verified, not just available (`format:check`, not
-   `format`).
-4. **Unit tests** — fast, on pure logic.
-5. **Smoke / e2e** — the critical journeys (`standards/05`). "200 ≠ healthy" lives here.
+| Risk | Automated evidence | Applies? | Enforcement |
+|---|---|---|---|
+| Artifact won't build / render | build, typecheck, docs render | Applies / N/A | Required |
+| Static-quality decay | lint, format check, **file-size tripwire** (`01` §3) | Applies / N/A | Required |
+| Business-logic regression | unit / integration | Applies / N/A | Required |
+| Critical journey breaks | smoke / E2E ("200 ≠ healthy", `05` §3) | Applies / N/A | Required |
+| Profile-specific risk | data-quality, model eval, cross-tenant negative test, protected-output regression, … | **set by the manifest** | Required |
 
-Expose **one composite command** (e.g. `check`) that runs the lot, so local and CI run the
-same thing.
+> **Coverage MUST:** *every applicable risk has automated evidence; every release-blocking
+> risk is represented by a **required** gate.* Profile-required gates (`profiles/`) plug into
+> this row by the same rule — a `multi-tenant` repo's cross-tenant test or a `runtime-ai`
+> repo's eval gate is part of *its* inventory, not an optional extra.
 
-## 2. Required checks & branch protection *(MUST once the plan/visibility allows)*
+Keep **one local composite command** (e.g. `check`) so local == CI; CI **may run the gates in
+parallel jobs** — the composite is for humans, not a serialization requirement.
 
-The gates only bite if the platform requires them: make the CI check a **required status
-check** and require a PR to merge (`standards/03` §4). Without that, CI is advisory.
+## Axis 2 — Workflow hardening *(is the pipeline that runs the gates itself safe?)*
 
-## 3. Workflow hygiene *(MUST)*
+A CI/CD workflow is privileged code — harden it *(MUST)*:
 
-A CI workflow is privileged code — harden it:
-
-- **Pin third-party Actions to a commit SHA**, with the version in a trailing comment
+- **Pin third-party Actions to a full commit SHA**, version in a trailing comment
   (`standards/07` §1.7). A floating `@v4` tag is mutable supply chain.
-- **Least privilege** — set `permissions:` to the minimum (default `contents: read`; grant
-  more only per job that needs it). Don't run with the default broad token.
-- **Concurrency** — cancel superseded runs (`concurrency: { group: …, cancel-in-progress:
-  true }`) to save minutes and avoid races.
-- **Timeouts** — every job sets `timeout-minutes` so a hung step can't run forever.
-- **Pin the toolchain** (Node/Python/etc. version) and cache dependencies; a slow gate gets
-  bypassed.
-- **Secrets** — never echo a secret; use the platform secret store; least-scope tokens
-  (`standards/07`).
+- **Least privilege** — `permissions:` set to the minimum (default `contents: read`; grant
+  more only on the job that needs it).
+- **Per-job `timeout-minutes`** — a hung step can't run forever.
+- **Pin the toolchain + lockfile** (language version, `--frozen-lockfile`); cache with a
+  trust boundary.
+- **Secrets** stay out of untrusted code paths; use the platform store; least-scope tokens;
+  never echoed (`standards/07`).
+- **Isolate untrusted input from privileged workflows** — fork-PR / `pull_request_target` and
+  any privileged deploy job are separated; untrusted PR code never runs with deploy secrets.
+- **Cache/artifact trust boundary** — scoped keys, retention, and integrity; don't trust a
+  cache or artifact a fork could poison.
+- **Concurrency is a MUST to *consider*, not a fixed setting:**
+  - **Validation CI** *should* **cancel superseded runs** (`cancel-in-progress: true`) — save
+    minutes.
+  - **Deploy / migration workflows MUST serialize and usually must NOT
+    `cancel-in-progress`** — cancelling mid-deploy/mid-migration can corrupt state. Use a
+    concurrency group that **queues**, not cancels.
 
-## 4. Dependency hygiene *(SHOULD)*
+## Axis 3 is not a score — it's the **enforcement** state *(mark per gate)*
+
+Each gate is `Required` or `Advisory`. Both are legitimate: build/lint/core-tests are
+`Required`; an experimental audit you're still stabilizing may be `Advisory` for now. **CI is
+only "enforced" when *all applicable release-blocking gates* are platform-`required` status
+checks** (`standards/03` §4). A green-but-advisory workflow that can't block a merge is *not*
+a gate — say so honestly rather than implying a block you don't have.
+
+## Dependency hygiene *(SHOULD)*
 
 Automated updates with a **risk-classed** merge policy (`standards/01` §7): auto-merge only
-low-risk groups with strong CI; review majors deliberately as their own task, never inside
-a feature PR.
+low-risk groups with strong CI; review majors deliberately as their own task, never inside a
+feature PR.
 
-## 5. Deploy gate *(MUST for deployed apps)*
+## Deploy gate *(MUST for deployed apps)*
 
 - Deploy **from the trunk** via CI; **never hand-copy artifacts**.
-- After deploy, **verify the live version equals the trunk** (a deploy-revision marker /
-  health endpoint reporting the commit). Details in `standards/06`.
+- After deploy, **assert the live revision equals the immutable release SHA built by that
+  deployment run** — not "latest trunk" (trunk can advance mid-deploy). This is the
+  `standards/06` §2 lockstep; read it back, don't just stamp it.
 - Promotion to production goes through CI + the human gate for high-risk changes
-  (`standards/07` §2).
+  (`standards/07` §2; `human-in-the-loop` for AI-initiated actions).
 
-## 6. Keep it fast and honest
+## Keep it fast and honest
 
 A gate that is slow, flaky, or routinely skipped is worse than none — it trains people to
-bypass. Keep CI under a few minutes where possible; quarantine flaky tests; if a gate is
-advisory (not yet enforceable), say so rather than implying a block you don't have.
+bypass. Keep CI fast; quarantine flaky tests; and never weaken Axis 1 by deleting a command
+or Axis 3 by quietly dropping a gate from `Required`.

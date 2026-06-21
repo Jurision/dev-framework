@@ -143,6 +143,15 @@ which version it copied, so it can diff against later releases.
 - Precedence hierarchy (law/compliance > security > project > profile > framework defaults).
 
 ### Changed
+- **`standards/04` rewritten to two axes** — **gate coverage** (a risk→evidence inventory:
+  every applicable risk has automated evidence, every release-blocking risk is a **required**
+  gate; profile-required gates plug in) vs **workflow hardening** (SHA-pin, least-priv,
+  timeout, toolchain/lockfile pin, untrusted-PR isolation, cache/artifact boundary;
+  **validation CI may cancel superseded runs, but deploy/migration must serialize**), plus a
+  per-gate **Required / Advisory** enforcement state. Fixed the leftover "live == trunk" →
+  "live == **immutable release SHA**" (aligns with `06`). Both CI templates synced
+  (coverage/hardening/enforcement comments, a profile-gate placeholder, `team-web`→`web-app`,
+  fillable trunk name).
 - Corrected the `AGENTS.md` cross-tool claim: it is the *preferred* source, but tools
   discover it differently and may need an adapter; it is context, not enforcement.
 - Definition of Done is now evidence-by-change-type, not "every change needs a test".

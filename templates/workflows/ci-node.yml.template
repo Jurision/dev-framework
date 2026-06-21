@@ -1,22 +1,27 @@
-# Copyable CI workflow — **Node / JS variant** (team-web / node profile). The gate stack from
-# standards/04, hardened per standards/07. For other stacks see ci-generic.yml.template
-# (language-agnostic skeleton); a Python variant is expected to come out of the first
-# real-project dry-run.
+# Copyable **validation** CI — Node / JS variant (a `web-app` base; add gates per the
+# modifiers you selected in profiles/). The gate stack from standards/04, hardened per
+# standards/07. Language-agnostic skeleton: ci-generic.yml.template.
 #
-# Copy to .github/workflows/ci.yml and fill the <FILL> commands. Make this check a REQUIRED
-# status check in branch protection (standards/03 §4) so it actually blocks merges.
+# This file shows all three of standards/04's concerns:
+#   • COVERAGE   — the gate steps below (one per applicable risk; add profile-required gates).
+#   • HARDENING  — pinned SHAs, least-privilege permissions, timeout, pinned toolchain.
+#   • ENFORCEMENT— making this check a REQUIRED status check (standards/03 §4) is what makes
+#                  it block merges. Until then it is advisory.
+#
+# NOTE: this is *validation* CI (safe to cancel superseded runs). A DEPLOY/MIGRATION workflow
+# is separate and must SERIALIZE — use a queueing concurrency group, NOT cancel-in-progress.
 
 name: ci
 
 on:
   pull_request:
   push:
-    branches: [main]
+    branches: [main] # your trunk — rename if it isn't "main" (starter default, standards/03)
 
 permissions:
   contents: read
 
-concurrency:
+concurrency: # validation CI: cancelling superseded runs is correct here
   group: ci-${{ github.ref }}
   cancel-in-progress: true
 
@@ -35,9 +40,13 @@ jobs:
 
       - run: "<FILL: install deps, frozen lockfile — e.g. npm ci>"
 
-      # The gate stack (standards/04 §1). Prefer one composite command so local == CI.
+      # COVERAGE — one gate per applicable risk (standards/04 Axis 1). Prefer a composite
+      # command so local == CI; CI may also split these into parallel jobs.
       - run: "<FILL: typecheck / build>"
       - run: "<FILL: lint — includes the file-size tripwire>"
       - run: "<FILL: format check — verify, not reformat>"
       - run: "<FILL: unit tests>"
       - run: "<FILL: smoke / e2e on the critical journey>"
+      # Profile-required gates (only those your manifest selects; delete the rest):
+      - run: "<FILL: profile gates — cross-tenant negative test (multi-tenant) / model eval
+              (runtime-ai) / data-quality (data-ai) / protected-output regression>"
