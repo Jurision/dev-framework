@@ -7,6 +7,10 @@ which version it copied, so it can diff against later releases.
 ## [Unreleased]
 
 ### Added
+- **`profiles/modifiers/persistent-data.md`** (provisional, 3 dry-runs) — atomic/off-site
+  backups, **scheduled restore drill** (raised to MUST against a 0/3 real-world record),
+  RPO/RTO, pre-migration snapshot, retention. `live-revision` deliberately left in `06`
+  (stateless apps need it too, so it isn't a *data* modifier rule).
 - **`profiles/modifiers/internal-ui.md` + `public-ui.md`** (provisional) — first UI
   modifiers. `internal-ui`: `02` applies in full to operator tools (no a11y/state waiver for
   "internal"). `public-ui`: sitemap + public link-graph + content↔render parity + scheduled
