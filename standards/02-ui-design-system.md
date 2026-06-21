@@ -42,9 +42,11 @@ labels/alt. Treat AA as a gate the same as tests (`standards/07` anchors the ver
 
 - **Required reading before a UI task** (the design target + tokens + protected zones), and
   a **visual review checklist** (`checklists/`).
-- A visual change **stops at a screenshot / preview and gets approval _before_ push** — the
-  reviewer sees the rendered result, not just the diff. Catch drift before it ships, not in
-  prod.
+- A user-facing visual change gets **rendered-output review before merge/release** — the
+  reviewer sees the rendered result (a screenshot, a PR preview, or a visual-regression run),
+  not just the diff. Catch drift before it ships, not in prod. *(Requiring approval **before
+  push** specifically — rather than on the PR — is a high-control-profile choice, not the
+  general rule; see `profiles/`.)*
 
 ## 6. Protected design zones *(MUST)*
 

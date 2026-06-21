@@ -17,8 +17,11 @@ running. Rule strength graded **MUST / SHOULD / MAY**.
 
 - The running app **exposes its build revision** (commit SHA) on a `/version` or health
   endpoint, and/or a `.deploy-revision` marker.
-- **After every deploy, assert `live == trunk`.** Automate the check; a deploy that doesn't
-  end in a confirmed revision match is not done.
+- **After every deploy, assert `live == the release SHA this pipeline built`** — not "latest
+  trunk" (trunk may have advanced while the deploy ran, which would falsely flag a correct
+  release as behind). The chain: intended release SHA → artifact attested with that SHA →
+  deploy that artifact → live revision must equal that SHA. Automate it; a deploy that
+  doesn't end in a confirmed match is not done.
 - Surface the revision in logs/UI footer so anyone debugging knows exactly what's running.
 
 ## 3. State lives outside the deploy artifact *(MUST)*
@@ -66,8 +69,15 @@ The most expensive outage is the one that **destroys data on deploy**.
 
 ## 7. Health & alerting — on symptoms users feel *(MUST)*
 
-- **Health checks exercise the real journey**, not just "process is up" (`standards/05` —
-  "200 ≠ healthy"). A dependency-aware check catches the DB/queue being down.
+- **Distinguish three checks — don't collapse them into one probe:**
+  - **Liveness** — is the process alive? Keep it **light and dependency-free**; a liveness
+    probe that calls the DB triggers restart storms when a dependency merely blips.
+  - **Readiness** — can this instance take traffic *right now*? May check critical
+    dependencies; when they're down it **pulls the instance from the pool** (it does not
+    restart it).
+  - **Synthetic journey monitoring** — periodically exercise the real user path **from
+    outside** the system (`standards/05` — "200 ≠ healthy"). Journey checks belong here, not
+    in the container/load-balancer health probe.
 - **Alert on user-visible symptoms** (error rate, latency, saturation, failed
   logins/exports) — each alert has an **owner** and a **runbook**, and is actionable (no
   alerts nobody acts on; they train people to ignore the pager).

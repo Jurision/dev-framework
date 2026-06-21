@@ -19,8 +19,11 @@ and the process haven't quietly drifted. Both must be cheap to run and honest. G
 
 - A **bug fix carries a regression test that fails before and passes after.** "Fixed" without
   a failing-first test is unverified.
-- New behavior carries a test for the behavior; a refactor keeps the existing tests green
-  and changes none of them in the same commit (otherwise it isn't a pure refactor).
+- New behavior carries a test for the behavior. A **pure refactor** keeps externally
+  observable behavior and acceptance results unchanged — it **may** move, rename, or
+  reorganize tests, decouple them from internals, or add a characterization test first; the
+  invariant is that **a test change must not mask a behavior change**. If behavior changed,
+  it isn't a pure refactor.
 
 ## 3. "HTTP 200 ≠ healthy" — journey & entity audits *(MUST for user-facing systems)*
 
@@ -37,9 +40,13 @@ renders but whose detail view 404s, an edit that never persists or never re-rend
 
 What gets audited gets followed (`standards/08` §12). A lightweight script over `git`/`gh`
 flags, in plain language: WIP over the limit, stale branches, duplicate-topic branches,
-undeleted merged branches, and core-file growth. **This framework runs exactly this idea on
-itself** (`controls/check.mjs` in `framework-ci`) — rules the repo can't check, it shouldn't
-claim.
+undeleted merged branches, and core-file growth.
+
+> **Honest scope.** This framework's own `controls/check.mjs` currently implements only the
+> *documentation-consistency* slice (doc references + relative links + no leaked
+> placeholders). The **process** audit just described (WIP / stale / duplicate-topic /
+> merged-undeleted / core-growth) is a **next-layer control, not yet implemented here.**
+> Don't claim a check the repo doesn't run (`standards/00` §6).
 
 ## 5. Keep the suite fast and trusted *(MUST)*
 

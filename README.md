@@ -50,8 +50,8 @@ Ready now (✅) vs outline-only (🚧):
 2. ✅ Add an agent adapter so your tools actually pick it up — see `adapters/`
    (e.g. a `CLAUDE.md` that imports `@AGENTS.md`). **Verify it is in effect; don't assume.**
 3. ✅ Add `templates/PULL_REQUEST_TEMPLATE.md` and `templates/CODEOWNERS`.
-4. ✅ Wire the quality gates from `standards/04-ci-cd-quality-gates.md` into CI — copy
-   `templates/workflows/ci.yml.template` and add a file-size tripwire.
+4. ✅ Wire the quality gates from `standards/04-ci-cd-quality-gates.md` into CI — copy a
+   workflow from `templates/workflows/` (`ci-node` / `ci-generic`) and add a file-size tripwire.
 5. 🚧 Walk `checklists/new-project-bootstrap.md` (outline) and tick the rest.
 
 ## Structure

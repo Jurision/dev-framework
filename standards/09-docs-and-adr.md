@@ -30,8 +30,11 @@ consequences** — the *why*, not just the *what*. Use `templates/adr.md.templat
 - Docs live **with the code** and change in the **same PR** as the convention they describe.
   A PR that changes behavior but not its docs is incomplete; a stale doc actively misleads
   every reader, human or agent.
-- **Evidence for a docs change** (`standards/00` §2): links resolve, it renders, examples are
-  valid. This repo enforces the first two on itself (`controls/check.mjs`).
+- **Evidence for a docs change** (`standards/00` §2): file references and relative links
+  resolve, it renders, examples are valid. This repo's `controls/check.mjs` automatically
+  verifies **only file references and relative links** — rendering, heading anchors, and
+  example validity stay a manual or later-control check; don't imply enforcement the repo
+  doesn't have (`standards/00` §6).
 - Docs are reviewed like code — wrong docs are bugs.
 
 ## 4. Generate, don't duplicate *(SHOULD)*
