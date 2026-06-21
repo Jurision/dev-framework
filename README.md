@@ -74,8 +74,9 @@ dev-framework/
 ├─ adapters/        ✅ tool adapters + compatibility-matrix.md
 ├─ templates/       ✅ AGENTS · PR · CODEOWNERS · CI(node/python/generic) · ADR · brief/feature-list/feature-spec/plan/report/handoff  ·  🚧 eslint
 ├─ controls/        ✅ check.mjs — the framework checks itself
-├─ checklists/      🚧 DoD · PR review · visual review · bootstrap
-├─ profiles/        ✅ composition model (base + modifiers) + adoption manifest  ·  🚧 base/modifier docs
+├─ checklists/      ✅ DoD · PR review · visual review · bootstrap
+├─ profiles/        ✅ composition model + base + modifiers + examples + adoption manifest
+├─ delivery/        ✅ worked example — this repo's own standard-11 package (dogfood)
 └─ adr/             🚧 project-local ADRs (template in templates/adr.md.template)
 ```
 

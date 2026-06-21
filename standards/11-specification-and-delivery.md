@@ -47,6 +47,10 @@ calibrate by **risk and profile**.
   fills gaps with guesses and leans to low-effort filler.
 - **Detail only the current big phase.** Later phases keep direction only — over-detailing
   ahead is wasted when requirements change. Finish one, then detail the next.
+- **Scale the package to risk and size.** Low-risk, small work may collapse brief / spec /
+  plan into a few lines or a single note; the full linked set (§3) is for substantial or
+  high-risk phases. The goal is **traceable intent, not paperwork** — a delivery package
+  heavier than the work it governs is a smell, not compliance.
 
 ## 3. The delivery package — linked authoritative docs *(MUST)*
 
