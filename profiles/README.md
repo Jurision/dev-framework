@@ -17,7 +17,8 @@ pixel-locked document output. So the model is:
   `persistent-data`, `multi-tenant`, `runtime-ai`, `protected-output`, `human-in-the-loop`,
   `team-maintained` / `solo-maintained`, `regulated`.
 - Record the selection in the project's `AGENTS.md` via an **adoption manifest**
-  (see [`adoption-manifest.template.yml`](adoption-manifest.template.yml)).
+  (see [`adoption-manifest.template.yml`](adoption-manifest.template.yml); filled,
+  desensitized examples in [`examples/`](examples/)).
 
 Real shapes (from the three frozen dry-runs, project specifics stripped):
 

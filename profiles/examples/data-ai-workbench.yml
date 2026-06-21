@@ -1,0 +1,17 @@
+# Example adoption manifest — archetype: data/AI pipeline + internal analyst workbench.
+# Illustrative, desensitized from a real dry-run; not a specific project.
+
+framework_version: 0.1.0-alpha
+base_profile: data-ai
+modifiers:
+  - internal-ui          # has an operator/analyst web workbench → standards/02 applies
+  - persistent-data      # operational store that can't be cheaply rebuilt
+  - runtime-ai           # calls a model at request time
+  - human-in-the-loop    # AI drafts; a human performs any external send/delete
+calibrations:
+  wip_cap: 5
+  stale_days: 14
+exceptions:
+  - rule: "standards/02 brand design system"
+    change: "relaxed (no public brand tokens / SEO)"
+    reason: "internal workbench only; internal-ui still keeps a11y / state / real-controls"
