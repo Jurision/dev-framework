@@ -26,3 +26,4 @@ jobs:
       - run: node controls/check.mjs
       - run: node controls/workflow-policy.mjs # the framework lints its own workflows
       - run: node controls/workflow-policy.test.mjs # fixtures for the workflow-policy lint
+      - run: node controls/assert-live-revision.test.mjs # tests for the live-revision control
