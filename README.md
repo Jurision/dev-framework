@@ -73,7 +73,7 @@ dev-framework/
 │  └─ 05-testing-and-audits.md        ✅   11-specification-and-delivery.md ✅
 ├─ adapters/        ✅ tool adapters + compatibility-matrix.md
 ├─ templates/       ✅ AGENTS · PR · CODEOWNERS · CI(node/python/generic) · ADR · brief/feature-list/feature-spec/plan/report/handoff  ·  🚧 eslint
-├─ controls/        ✅ check.mjs — the framework checks itself
+├─ controls/        ✅ check.mjs (docs) + workflow-policy.mjs (Actions hardening) — self-checked
 ├─ checklists/      ✅ DoD · PR review · visual review · bootstrap
 ├─ profiles/        ✅ composition model + base + modifiers + examples + adoption manifest
 ├─ delivery/        ✅ worked example — this repo's own standard-11 package (dogfood)

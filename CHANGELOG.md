@@ -7,6 +7,15 @@ which version it copied, so it can diff against later releases.
 ## [Unreleased]
 
 ### Added
+- **`controls/workflow-policy.mjs`** (0.2 — first control, implements #32) — a
+  **zero-dependency GitHub Actions workflow-policy lint** (rules **WF001–WF008**: full-SHA
+  `uses:`, least-privilege `permissions:`, per-job `timeout-minutes`, validation-cancels vs
+  **deploy-serialized** `concurrency`, privileged-trigger isolation, cache/artifact review,
+  scan **all** workflows). Text + `--json`, exit-on-FAIL, optional config
+  (`classify`/`shaExceptions`/`ignore`), fixtures (`workflow-policy.test.mjs`), and
+  `controls/README.md` documenting **optional** `actionlint`/`zizmor` companions (not bundled).
+  Wired into `framework-ci`; the dogfood caught a real gap (this repo's own CI lacked
+  `timeout-minutes`/`concurrency` — now fixed).
 - `delivery/adoption-feedback/001-workflow-hardening.md` — desensitized findings from the
   **first real-project adoption** (workflow hardening). Confirms **`workflow-policy lint`** as
   the first `0.2` control and surfaces two checklist lessons (formatter-vs-gate scope;
