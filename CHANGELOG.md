@@ -36,6 +36,19 @@ which version it copied, so it can diff against later releases.
   **first real-project adoption** (workflow hardening). Confirms **`workflow-policy lint`** as
   the first `0.2` control and surfaces two checklist lessons (formatter-vs-gate scope;
   inventory *all* workflows, not just validation CI).
+- `delivery/adoption-feedback/002-deploy-revision-assertion.md` — desensitized findings from the
+  **second adoption** (the live-revision assertion, `standards/06` §2, closing 001 #6). Confirms
+  the control in real production and proposes a reusable **"vendoring a control" checklist**
+  (provenance header + integrity test + formatter-ignore).
+- `delivery/adoption-feedback/003-scope-creep-and-staged-cutover.md` — desensitized case study: a
+  "login" need that scope-crept into auth + multi-tenancy + sync + a reverse-proxy cutover +
+  data-migration. Surfaces a candidate **build-vs-buy** principle (`standards/00`), a
+  **cutover-safety** checklist (`standards/06`), and a **seed-is-not-identity** regression
+  (`standards/10`); reinforces `standards/11` scale-to-risk and a "classify the need" gate.
+- `delivery/adoption-feedback/004-stale-context-coordination.md` — desensitized session-hygiene
+  case (`standards/08` §13): two independent **stale-context coordination errors** in one
+  multi-agent session (acting on an issue's original text / on partial state, instead of live
+  state). Proposes a **"verify-before-coordinate"** clause + a checklist line.
 
 ### Fixed
 - **`workflow-policy` hardened** (review follow-up — make the checker trustworthy before
