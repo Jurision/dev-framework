@@ -45,6 +45,10 @@ which version it copied, so it can diff against later releases.
   data-migration. Surfaces a candidate **build-vs-buy** principle (`standards/00`), a
   **cutover-safety** checklist (`standards/06`), and a **seed-is-not-identity** regression
   (`standards/10`); reinforces `standards/11` scale-to-risk and a "classify the need" gate.
+- `delivery/adoption-feedback/004-stale-context-coordination.md` — desensitized session-hygiene
+  case (`standards/08` §13): two independent **stale-context coordination errors** in one
+  multi-agent session (acting on an issue's original text / on partial state, instead of live
+  state). Proposes a **"verify-before-coordinate"** clause + a checklist line.
 
 ### Fixed
 - **`workflow-policy` hardened** (review follow-up — make the checker trustworthy before
